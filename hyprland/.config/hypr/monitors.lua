@@ -20,6 +20,6 @@ hl.monitor({
     output   = "DP-4", -- Samsung through docking station
     mode     = "1920x1080",
     position = "-3000x-500",
-    transform = 1,
+    transform = 1, -- Rotate
     scale    = "auto",
 })

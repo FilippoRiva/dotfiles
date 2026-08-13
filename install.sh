@@ -28,7 +28,7 @@ EOF
 
 install_configs() {
     # The apps configured in this dotfiles
-    local apps=(hyprland, vscodium)
+    local apps=(hyprland vscodium)
     
     
     # Install dotfiles using stow

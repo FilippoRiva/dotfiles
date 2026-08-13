@@ -1,6 +1,7 @@
 ----------------------
 ----   PROGRAMS   ----
 ----------------------
+
 PROGRAMS = {
     terminal    = "kitty",
     fileManager = "dolphin",
