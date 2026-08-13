@@ -11,11 +11,13 @@ hl.config({
         kb_rules   = "",
 
         follow_mouse = 1,
+        accel_profile = "flat",
 
-        sensitivity = 0, 
+        sensitivity = 0,
 
         touchpad = {
             natural_scroll = true,
+            scroll_factor = 0.2
         },
     },
 })
@@ -34,6 +36,6 @@ hl.device({
 
 hl.device({
     name        = "synps/2-synaptics-touchpad",
-    sensitivity = 0,
+    sensitivity = 0.2,
 })
 
