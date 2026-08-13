@@ -35,5 +35,15 @@
         "key": "space g",
         "command": "workbench.scm.focus",
         "when": "!editorTextFocus && !inputFocus"
+    },
+    {
+        "key": "space /",
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "!editorTextFocus && !inputFocus"
+    },
+    {
+        "key": "escape",
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "terminalFocus"
     }
 ]
