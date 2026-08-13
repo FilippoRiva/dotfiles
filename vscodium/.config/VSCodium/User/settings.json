@@ -77,4 +77,11 @@
     "<C-f>": false,
     "<C-w>": false,
 },
+
+// Latex Worksshop
+"latex-workshop.latex.autoClean.run": "onBuilt",
+"latex-workshop.latex.outDir": "%DIR%/out",
+"latex-workshop.latex.auxDir": "%DIR%/out",
+"latex-workshop.latex.clean.subfolder.enabled": true,
+"latex-workshop.latex.clean.method": "glob"
 }
