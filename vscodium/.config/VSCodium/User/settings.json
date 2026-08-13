@@ -1,23 +1,76 @@
 {
+// Workbench
 "workbench.iconTheme": "material-icon-theme",
 "workbench.productIconTheme": "material-product-icons",
 "workbench.colorTheme": "Catppuccin Macchiato",
-"window.menuBarVisibility": "hidden",
+"workbench.list.smoothScrolling": true,
+"workbench.secondarySideBar.showLabels": false,
+"workbench.panel.showLabels": false,
+"workbench.editor.titleScrollbarVisibility": "hidden",
+"workbench.editor.closeEmptyGroups": true,
+"workbench.startupEditor": "none",
+
+//Editor
 "editor.fontFamily": "'GeistMono Nerd Font Propo', 'Droid Sans Mono', monospace",
 "editor.padding.bottom": 20,
 "editor.padding.top": 20,
 "editor.inlayHints.padding": true,
 "editor.smoothScrolling": true,
-"breadcrumbs.enabled": false,
 "editor.cursorSmoothCaretAnimation": "on",
-"workbench.list.smoothScrolling": true,
-"terminal.integrated.smoothScrolling": true,
 "editor.cursorBlinking": "expand",
+
+"terminal.integrated.smoothScrolling": true,
 "terminal.integrated.cursorStyle": "line",
-"workbench.secondarySideBar.showLabels": false,
-"workbench.panel.showLabels": false,
+
+"breadcrumbs.enabled": false,
+
 "window.titleBarStyle": "native",
 "window.customTitleBarVisibility": "never",
-"workbench.editor.titleScrollbarVisibility": "hidden",
-"workbench.startupEditor": "none",
+"window.menuBarVisibility": "hidden",
+
+// Vim
+"vim.easymotion": true,
+"vim.incsearch": true,
+"vim.useSystemClipboard": true,
+"vim.useCtrlKeys": true,
+"vim.hlsearch": false,
+"extensions.experimental.affinity": {
+    "vscodevim.vim": 1 //improves performance
+},
+
+// Vim - Leader 
+"vim.leader": "<space>",
+"vim.normalModeKeyBindingsNonRecursive": [
+    {
+        "before": ["<leader>", "F"],
+        "commands": ["workbench.action.findInFiles"]
+    },
+    {
+        "before": ["<leader>", "f"],
+        "commands": ["workbench.action.quickOpen"]
+    },
+    {
+        "before": ["<leader>", "p"],
+        "commands": ["workbench.action.showCommands"]
+    },
+    {
+        "before": ["<leader>", "e"],
+        "commands": ["workbench.explorer.fileView.focus"]
+    },
+    {
+        "before": ["<leader>", "g"],
+        "commands": ["workbench.scm.focus"]
+    },
+    {
+        "before": ["<leader>", "|"],
+        "commands": ["workbench.action.splitEditor"]
+    },
+],
+
+// Vim - Keys to leave to vscode
+"vim.handleKeys": {
+    "<C-a>": false,
+    "<C-f>": false,
+    "<C-w>": false,
+},
 }

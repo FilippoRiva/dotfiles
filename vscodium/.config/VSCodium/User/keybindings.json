@@ -1,3 +1,39 @@
 // Place your key bindings in this file to override the defaults
-[
+[    
+    {
+        "key": "escape",
+        "command": "runCommands",
+        "when": "sideBarFocus",
+        "args": {
+            "commands": [
+                "workbench.action.closeSidebar",
+                "workbench.action.focusActiveEditorGroup"
+            ]
+        }
+    },
+    {
+        "key": "space f",
+        "command": "workbench.action.quickOpen",
+        "when": "!editorTextFocus && !inputFocus"
+    },
+    {
+        "key": "space shift+f",
+        "command": "workbench.action.findInFiles",
+        "when": "!editorTextFocus && !inputFocus"
+    },
+    {
+        "key": "space e",
+        "command": "workbench.explorer.fileView.focus",
+        "when": "!editorTextFocus && !inputFocus"
+    },
+    {
+        "key": "space p",
+        "command": "workbench.action.showCommands",
+        "when": "!editorTextFocus && !inputFocus"
+    },
+    {
+        "key": "space g",
+        "command": "workbench.scm.focus",
+        "when": "!editorTextFocus && !inputFocus"
+    }
 ]
