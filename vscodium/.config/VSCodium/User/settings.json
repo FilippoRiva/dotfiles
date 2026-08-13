@@ -83,5 +83,34 @@
 "latex-workshop.latex.outDir": "%DIR%/out",
 "latex-workshop.latex.auxDir": "%DIR%/out",
 "latex-workshop.latex.clean.subfolder.enabled": true,
-"latex-workshop.latex.clean.method": "glob"
+"latex-workshop.latex.clean.method": "glob",
+"latex-workshop.latex.clean.fileTypes": [
+  // defaults 
+  "*.aux",
+  "*.bbl",
+  "*.blg",
+  "*.idx",
+  "*.ind",
+  "*.lof",
+  "*.lot",
+  "*.out",
+  "*.toc",
+  "*.acn",
+  "*.acr",
+  "*.alg",
+  "*.glg",
+  "*.glo",
+  "*.gls",
+  "*.fls",
+  "*.log",
+  "*.fdb_latexmk",
+  "*.snm",
+  "*.nav",
+  "*.vrb",
+  // minted
+  "thesis.listing",
+  "_minted/*",
+  // misterious additional src folder
+  "src/*"
+]
 }
