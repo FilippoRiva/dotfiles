@@ -1,0 +1,8 @@
+require("env")
+require("input")
+require("monitors")
+require("start")
+require("look_and_feel")
+require("keybinds")
+require("window_rules")
+require("colors")
