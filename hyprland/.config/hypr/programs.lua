@@ -7,5 +7,6 @@ PROGRAMS = {
     fileManager = "dolphin",
     menu = "fuzzel",
     browser = "firefox",
-    musicPlayer = "spotify"
+    musicPlayer = "spotify",
+    screenCapture = "hyprshot -m region"
 }
