@@ -1,5 +1,5 @@
 #!/bin/bash
-# Utils
+#### Print Utilities
 print() {
     local content=$1
     echo " > ${content}"
@@ -43,19 +43,27 @@ print_usage() {
 EOF
 }
 
-# Installation and Uninstall procedures
+
+
+
+
+
+
+#### Installation procedures
 user_apps=(hyprland vscodium)
 system_apps=(grub plymouth)
 
 stow_install() {
     print_divider 'Stow install'
     # Install user apps
+    echo "User-level applications:"
     for app in "${user_apps[@]}"; do
     	print "Installing ${app} configs"
     	stow --adopt -v ${app}
     done 
 
     # Install system apps
+    echo "System-level applications:"
     for app in "${system_apps[@]}"; do
     	print "Installing ${app} configs"
     	sudo stow --adopt -v -t / ${app}
@@ -63,62 +71,51 @@ stow_install() {
     
     # Workaround to overwrite preexisting config (paired with stow --adopt flag)
     if [[ "$TEST" != true ]]; then
-        print "Resetting the repo"
+        print "Deleting old configs"
         git reset --hard
     fi
 }
 
-stow_uninstall() {
-    print_divider 'Stow uninstall'
-    # Uninstall user apps
-    for app in "${user_apps[@]}"; do
-    	print "Removing ${app} configs"
-    	stow -D -v ${app}
-    done 
+# Generates grub configs
+grub_sync() {
+    print_divider 'Grub sync'
 
-    # Uninstall system apps
-    for app in "${system_apps[@]}"; do
-    	print "Removing ${app} configs"
-    	stow -D -v -t / ${app}
-    done 
-}
-
-generate_grub_config() {
-    print_divider 'Grub config generation'
-
-    print "Generating grub config..."
+    print "Generating grub config:"
     sudo grub-mkconfig -o /boot/grub/grub.cfg
-
-    print "Grub config updated"
 }
 
-reload_hyprland() {
-    print_divider 'Hyprland reload'
-    print "Reloading Hyprland"
-    hyprctl reload
-    print "Hyprland reloaded"
-}
+# Syncs themes and builds a new UKI
+plymouth_sync() {
+    print_divider 'Plymouth sync'
+    for theme in plymouth_themes/usr/share/plymouth/themes/*/; do
+        print "Syncing theme : $(basename $theme)"
+        sudo rm -rf "/usr/share/plymouth/themes/$(basename "$theme")"
+        sudo cp -r "$theme" /usr/share/plymouth/themes/
+    done
 
-generate_uki() {
+    print 'Rebuilding UKI:'
     sudo mkinitcpio -P
 }
 
-uninstall() {
-    stow_uninstall
+hyprland_sync() {
+    print_divider 'Hyprland reload'
+    print "Reloading Hyprland"
+    hyprctl reload
 }
 
+
 install() {
-    print "Requesting sudo access..."
+    print "Requesting sudo access:"
     sudo -v || return 1
 
     stow_install
     
     # System stuff
-    generate_grub_config
-    generate_uki
+    grub_sync
+    plymouth_sync
     
     # User stuff
-    reload_hyprland
+    hyprland_sync
 }
 
 # Main
@@ -129,11 +126,15 @@ if [[ $# -eq 0 ]]; then
     exit 1
 fi
 
-while getopts 'ui' flag; do
+while getopts 'uit' flag; do
     case "${flag}" in
         u) uninstall    ;;
-        i) install      ;;
+        i) INSTALL=true      ;;
         t) TEST=true ;;
         \?) print_usage  ;;
     esac
 done
+
+if [[ $INSTALL = true ]]; then
+    install
+fi
