@@ -3,7 +3,7 @@
 GRUB_DEFAULT=0
 GRUB_TIMEOUT=5
 GRUB_DISTRIBUTOR="Arch"
-GRUB_CMDLINE_LINUX_DEFAULT="quiet splash loglevel=3 systemd.show_state=false rd.systemd.show_status=false fbcon=nodefer"
+GRUB_CMDLINE_LINUX_DEFAULT="quiet logo.nologo splash loglevel=3 systemd.show_state=false rd.systemd.show_status=false fbcon=nodefer vt.global_cursor_default=0"
 GRUB_CMDLINE_LINUX=""
 
 # Preload both GPT and MBR modules so that they are not missed
@@ -28,7 +28,7 @@ GRUB_TERMINAL_INPUT=console
 GRUB_GFXMODE=auto
 
 # Uncomment to allow the kernel use the same resolution used by grub
-GRUB_GFXPAYLOAD_LINUX=keep
+#GRUB_GFXPAYLOAD_LINUX=keep
 
 # Uncomment if you want GRUB to pass to the Linux kernel the old parameter
 # format "root=/dev/xxx" instead of "root=/dev/disk/by-uuid/xxx"
