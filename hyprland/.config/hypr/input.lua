@@ -31,7 +31,7 @@ hl.gesture({
 -- Per-device config
 hl.device({
     name        = "steelseries-steelseries-prime-wireless",
-    sensitivity = -0.3,
+    sensitivity = 0,
 })
 
 hl.device({
