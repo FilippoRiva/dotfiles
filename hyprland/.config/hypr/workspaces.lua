@@ -3,14 +3,31 @@
 --------------------
 
 hl.workspace_rule({
-    workspace = "r[1-2]",
-    monitor = "DP-3"
+    workspace = "1",
+    monitor = "DP-3",
+    persistent = true
 })
+
 hl.workspace_rule({
-    workspace = "r[3-4]",
-    monitor = "DP-4"
+    workspace = "2",
+    monitor = "DP-3",
+    persistent = true
 })
+
 hl.workspace_rule({
-    workspace = "r[5-6]",
-    monitor = "eDP-1"
+    workspace = "3",
+    monitor = "DP-3",
+    persistent = true
+})
+
+hl.workspace_rule({
+    workspace = "4",
+    monitor = "DP-4",
+    persistent = true
+})
+
+hl.workspace_rule({
+    workspace = "5",
+    monitor = "eDP-1",
+    persistent = true
 })
