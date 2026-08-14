@@ -45,21 +45,27 @@ EOF
 
 # Installation and Uninstall procedures
 user_apps=(hyprland vscodium)
-system_apps=(grub)
+system_apps=(grub plymouth)
 
 stow_install() {
     print_divider 'Stow install'
     # Install user apps
     for app in "${user_apps[@]}"; do
     	print "Installing ${app} configs"
-    	stow -v ${app}
+    	stow --adopt -v ${app}
     done 
 
     # Install system apps
     for app in "${system_apps[@]}"; do
     	print "Installing ${app} configs"
-    	sudo stow -v -t / ${app}
+    	sudo stow --adopt -v -t / ${app}
     done 
+    
+    # Workaround to overwrite preexisting config (paired with stow --adopt flag)
+    if [[ "$TEST" != true ]]; then
+        print "Resetting the repo"
+        git reset --hard
+    fi
 }
 
 stow_uninstall() {
@@ -91,7 +97,10 @@ reload_hyprland() {
     print "Reloading Hyprland"
     hyprctl reload
     print "Hyprland reloaded"
+}
 
+generate_uki() {
+    sudo mkinitcpio -P
 }
 
 uninstall() {
@@ -103,7 +112,12 @@ install() {
     sudo -v || return 1
 
     stow_install
+    
+    # System stuff
     generate_grub_config
+    generate_uki
+    
+    # User stuff
     reload_hyprland
 }
 
@@ -119,6 +133,7 @@ while getopts 'ui' flag; do
     case "${flag}" in
         u) uninstall    ;;
         i) install      ;;
+        t) TEST=true ;;
         \?) print_usage  ;;
     esac
 done
