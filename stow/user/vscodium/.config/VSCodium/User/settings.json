@@ -1,0 +1,126 @@
+{
+// Workbench
+"workbench.iconTheme": "material-icon-theme",
+"workbench.productIconTheme": "material-product-icons",
+"workbench.colorTheme": "Catppuccin Macchiato",
+"workbench.list.smoothScrolling": true,
+"workbench.secondarySideBar.showLabels": false,
+"workbench.panel.showLabels": false,
+"workbench.editor.titleScrollbarVisibility": "hidden",
+"workbench.editor.closeEmptyGroups": true,
+"workbench.startupEditor": "none",
+
+//Editor
+"editor.fontFamily": "'GeistMono Nerd Font Propo', 'Droid Sans Mono', monospace",
+"editor.padding.bottom": 20,
+"editor.padding.top": 20,
+"editor.inlayHints.padding": true,
+"editor.smoothScrolling": true,
+"editor.cursorSmoothCaretAnimation": "on",
+"editor.cursorBlinking": "expand",
+
+"terminal.integrated.smoothScrolling": true,
+"terminal.integrated.cursorStyle": "line",
+
+"breadcrumbs.enabled": false,
+
+"window.titleBarStyle": "native",
+"window.customTitleBarVisibility": "never",
+"window.menuBarVisibility": "hidden",
+
+// Vim
+"vim.easymotion": true,
+"vim.incsearch": true,
+"vim.useSystemClipboard": true,
+"vim.useCtrlKeys": true,
+"vim.hlsearch": false,
+"extensions.experimental.affinity": {
+    "vscodevim.vim": 1 //improves performance
+},
+
+// Vim - Leader 
+"vim.leader": "<space>",
+"vim.normalModeKeyBindingsNonRecursive": [
+    {
+        "before": ["<leader>", "F"],
+        "commands": ["workbench.action.findInFiles"]
+    },
+    {
+        "before": ["<leader>", "f"],
+        "commands": ["workbench.action.quickOpen"]
+    },
+    {
+        "before": ["<leader>", "p"],
+        "commands": ["workbench.action.showCommands"]
+    },
+    {
+        "before": ["<leader>", "e"],
+        "commands": ["workbench.explorer.fileView.focus"]
+    },
+    {
+        "before": ["<leader>", "g"],
+        "commands": ["workbench.scm.focus"]
+    },
+    {
+        "before": ["<leader>", "|"],
+        "commands": ["workbench.action.splitEditor"]
+    },
+    {
+        "before": ["<leader>", "/"],
+        "commands": ["workbench.action.terminal.toggleTerminal"]
+    }
+],
+
+// Vim - Keys to leave to vscode
+"vim.handleKeys": {
+    "<C-a>": false,
+    "<C-f>": false,
+    "<C-w>": false,
+},
+
+// Latex Worksshop
+"latex-workshop.latex.autoClean.run": "onBuilt",
+"latex-workshop.latex.outDir": "%DIR%/out",
+"latex-workshop.latex.auxDir": "%DIR%/out",
+"latex-workshop.latex.clean.subfolder.enabled": true,
+"latex-workshop.latex.clean.method": "glob",
+"latex-workshop.latex.clean.fileTypes": [
+  // defaults 
+  "*.aux",
+  "*.bbl",
+  "*.blg",
+  "*.idx",
+  "*.ind",
+  "*.lof",
+  "*.lot",
+  "*.out",
+  "*.toc",
+  "*.acn",
+  "*.acr",
+  "*.alg",
+  "*.glg",
+  "*.glo",
+  "*.gls",
+  "*.fls",
+  "*.log",
+  "*.fdb_latexmk",
+  "*.snm",
+  "*.nav",
+  "*.vrb",
+  // minted
+  "thesis.listing",
+  "_minted/*",
+  // misterious additional src folder
+  "src/*"
+],
+"workbench.editorAssociations": {
+    "{git,gitlens,chat-editing-snapshot-text-model,copilot,git-graph,git-graph-3}:/**/*.qrc": "default",
+    "*.qrc": "qt-core.qrcEditor"
+},
+"qt-core.additionalQtPaths": [
+    {
+        "name": "Qt-5.15.19-linux-g++-x86_64_from_PATH",
+        "path": "/usr/bin/qmake"
+    }
+]
+}
