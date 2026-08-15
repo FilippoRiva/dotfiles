@@ -4,7 +4,7 @@
 
 PROGRAMS = {
     terminal    = "kitty",
-    fileManager = "dolphin",
+    fileManager = "kitty zsh -i -c 'y; exec zsh'",
     menu = "fuzzel",
     browser = "firefox",
     musicPlayer = "spotify",

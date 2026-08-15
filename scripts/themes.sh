@@ -37,13 +37,10 @@ propagate_theme() {
         [[ -f "$file" ]] || continue
 
         hyprland__name="${file##*/}"
-        echo "The file name is $hyprland__name"
-
         name="${hyprland__name##hyprland__}"
-        echo "The extracted thing is $name"
 
-        cp "$file" $STOW_USER_DIR/hyprland/.config/hypr/$name
         print "Updating hyprland colors theme from template $name"
+        cp "$file" $STOW_USER_DIR/hyprland/.config/hypr/$name
     done
 }
 
