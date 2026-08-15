@@ -1,3 +1,5 @@
+PYWAL_DIR="$HOME/.cache/wal"
+
 ### Wallpaper Management
 propagate_wallpaper() {
     print "Propagating the selected wallpaper"
@@ -5,6 +7,29 @@ propagate_wallpaper() {
     mkdir -p "$HOME/Images/wallpapers"
     cp -f "$WALLPAPER" "$HOME/Images/wallpapers/wallpaper.png"
 }
+
+propagate_theme() {
+    print "Running wal"
+    wal -i "$WALLPAPER"    
+
+    for file in "$HOME/.cache/wal"/custom__*; do
+            [[ -f "$file" ]] || continue
+
+        custom__app__theme__name="${file##*/}"
+
+        app__theme__name="${custom__app__theme__name#custom__}"
+        app="${app__theme__name%%__*}"
+
+        theme__name="${app__theme__name#*__}"
+        theme="${theme__name%%__*}"
+        name="${theme__name##*__}"
+
+        mkdir -p "./themes/$app/$theme"
+        cp "$file" "./themes/$app/$theme/$name"
+        print "Updating $app $theme theme form template $name"
+    done
+}
+
 
 ### Themes
 sync_theme() {
@@ -26,6 +51,7 @@ sync_theme_folder(){
 sync_themes(){
     print_divider "Theme syncing"
     propagate_wallpaper
+    propagate_theme
     
     if [[ -n "$USER_MODE" ]]; then
         return 1
