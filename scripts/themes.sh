@@ -10,10 +10,14 @@ propagate_wallpaper() {
 
 propagate_theme() {
     print "Running wal"
-    wal -i "$WALLPAPER"    
+    if [[ -z $PYWAL_THEME ]]; then
+        wal -i "$WALLPAPER"    
+    else 
+        wal --theme $PYWAL_THEME
+    fi
 
     for file in "$HOME/.cache/wal"/custom__*; do
-            [[ -f "$file" ]] || continue
+        [[ -f "$file" ]] || continue
 
         custom__app__theme__name="${file##*/}"
 
@@ -27,6 +31,19 @@ propagate_theme() {
         mkdir -p "./themes/$app/$theme"
         cp "$file" "./themes/$app/$theme/$name"
         print "Updating $app $theme theme form template $name"
+    done
+
+    for file in "$HOME/.cache/wal"/hyprland__*; do
+        [[ -f "$file" ]] || continue
+
+        hyprland__name="${file##*/}"
+        echo "The file name is $hyprland__name"
+
+        name="${hyprland__name##hyprland__}"
+        echo "The extracted thing is $name"
+
+        cp "$file" $STOW_USER_DIR/hyprland/.config/hypr/$name
+        print "Updating hyprland colors theme from template $name"
     done
 }
 

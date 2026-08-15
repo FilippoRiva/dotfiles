@@ -3,8 +3,21 @@
 -------------------------------
 
 COLORS = {
-    primary = "rgb(007979)",
-    secondary = "rgb(24B1B1)",
-    ternary = "rgb(FFE2AF)",
-    quaternary = "rgb(E37434)"
+    foreground = "#c9c8ba",
+    background = "#242129",
+    color1 = "#956566",
+    color2 = "#C4656C",
+    color3 = "#938C79",
+    color4 = "#B39379",
+    color5 = "#CD9B7A",
+    color6 = "#797E84",
+    color7 = "#c9c8ba",
+    color8 = "#8c8c82",
+    color9 = "#956566",
+    color10 = "#C4656C",
+    color11 = "#938C79",
+    color12 = "#B39379",
+    color13 = "#CD9B7A",
+    color14 = "#797E84",
+    color15 = "#c9c8ba",
 }

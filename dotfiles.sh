@@ -29,12 +29,13 @@ if [[ $# -eq 0 ]]; then
     exit 1
 fi
 
-while getopts 'ituw:' flag; do
+while getopts 'ituw:p:' flag; do
     case "${flag}" in
         i) INSTALL=true         ;;
         t) TEST=true            ;;
         u) USER_MODE=true       ;;
         w) WALLPAPER=$OPTARG    ;;
+        p) PYWAL_THEME=$OPTARG  ;;
         \?) print_usage         ;;
     esac
 done
