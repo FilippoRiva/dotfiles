@@ -34,3 +34,27 @@ hl.window_rule({
     move  = "20 monitor_h-120",
     float = true,
 })
+
+hl.window_rule({
+    name = "zen_workspace",
+    match = {
+        initial_class = "zen"
+    },
+    workspace = 1
+})
+
+hl.window_rule({
+    name = "codium_workspace",
+    match = {
+        initial_class = "codium"
+    },
+    workspace = 2
+})
+
+hl.window_rule({
+    name = "kitty_workspace",
+    match = {
+        initial_class = "kitty"
+    },
+    workspace = 3
+})

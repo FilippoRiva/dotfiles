@@ -9,17 +9,19 @@ hl.monitor({
     scale    = "1.25",
 })
 
+-- Tower setup
+
 hl.monitor({
-    output   = "DP-3", -- Omen through docking station
-    mode     = "1920x1080@120",
-    position = "-1920x0",
+    output   = "DP-1", -- Omen on tower
+    mode     = "1920x1080@164.92",
+    position = "0x0",
     scale    = "auto",
 })
 
 hl.monitor({
-    output   = "DP-4", -- Samsung through docking station
+    output   = "HDMI-A-1", -- Samsung on tower
     mode     = "1920x1080",
-    position = "-3000x-500",
-    transform = 1, -- Rotate
+    position = "1920x-480",
+    transform = 3,
     scale    = "auto",
 })

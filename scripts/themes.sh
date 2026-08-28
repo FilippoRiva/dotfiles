@@ -16,6 +16,7 @@ propagate_theme() {
         wal --theme $PYWAL_THEME
     fi
 
+    # inject pywal into each template
     for file in "$HOME/.cache/wal"/custom__*; do
         [[ -f "$file" ]] || continue
 
@@ -33,6 +34,7 @@ propagate_theme() {
         print "Updating $app $theme theme form template $name"
     done
 
+    # inject pywal into hyprland
     for file in "$HOME/.cache/wal"/hyprland__*; do
         [[ -f "$file" ]] || continue
 
