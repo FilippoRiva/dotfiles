@@ -127,4 +127,5 @@
         "path": "/usr/bin/qmake"
     }
 ],
+"git.autofetch": true,
 }
