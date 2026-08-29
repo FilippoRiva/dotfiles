@@ -1,9 +1,7 @@
 import QtQuick
 
 Item {
-    required property bool visibleInNotch
-
-    opacity: visibleInNotch ? 1 : 0
+    opacity: visible ? 1 : 0
 
     transitions: [
         Transition {
@@ -12,7 +10,7 @@ Item {
 
             NumberAnimation {
                 property: "opacity"
-                duration: 400
+                duration: 3000
                 easing.type: Easing.OutCubic
             }
         },
@@ -22,7 +20,7 @@ Item {
 
             NumberAnimation {
                 property: "opacity"
-                duration: 300
+                duration: 3000
                 easing.type: Easing.OutCubic
             }
         }

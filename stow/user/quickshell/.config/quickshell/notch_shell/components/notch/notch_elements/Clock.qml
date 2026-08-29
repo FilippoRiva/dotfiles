@@ -1,8 +1,10 @@
 import QtQuick 
+import '.' as Elements
 
-NotchElement {
+Elements.NotchElement {
     width: content.width
     height: content.height
+    property int size: 48
 
     property date currentTime: new Date()
 
@@ -19,6 +21,6 @@ NotchElement {
 
         text: Qt.formatTime(currentTime, "HH:mm:ss")
         color: "white"
-        font.pixelSize: 48
+        font.pixelSize: size
     }
 }

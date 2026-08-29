@@ -8,7 +8,12 @@ require("colors")
 hl.config({
     general = {
         gaps_in  = 5,
-        gaps_out = 20,
+        gaps_out = {
+            top = 42,
+            right = 10,
+            bottom= 10,
+            left= 10,
+        },
 
         border_size = 1,
 
@@ -60,4 +65,4 @@ hl.curve("easy",           { type = "spring", mass = 1, stiffness = 238.1191, da
 hl.animation({ leaf = "global",        enabled = true,  speed = 10,   bezier = "easeOutQuint" })
 hl.animation({ leaf = "border",        enabled = true,  speed = 5.39, bezier = "easeOutQuint" })
 hl.animation({ leaf = "windows",       enabled = true,  speed = 4.79, spring = "easy" ,         style = "slide"})
-hl.animation({ leaf = "workspaces",    enabled = true,  speed = 1.94, bezier = "almostLinear", style = "slidevert" })
+hl.animation({ leaf = "workspaces",    enabled = true,  speed = 1.94, bezier = "almostLinear", style = "slide" })
