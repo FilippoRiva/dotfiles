@@ -12,7 +12,6 @@ Views.NotchView{
         Elements.HyprlandWorkspace {
         }
         Elements.Clock {
-            Layout.margins: 10
             size: 10
             format: "HH:mm"
         }

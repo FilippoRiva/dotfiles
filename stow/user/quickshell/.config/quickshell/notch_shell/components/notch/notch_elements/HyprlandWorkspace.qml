@@ -2,6 +2,7 @@ import Quickshell
 import QtQuick
 import Quickshell.Hyprland
 import '.' as Elements
+import "../../.."
 
 Elements.NotchElement {
     width: content.width
@@ -12,13 +13,13 @@ Elements.NotchElement {
 
         width: 25
         height: 25
-        radius: 15
-        color: "#302c38"
+        color: "transparent"
 
         Text {
+            font.family: "Geistmono Nerd Font"
             anchors.centerIn: parent
             text: Hyprland.focusedWorkspace?.id ?? "?"
-            color: "white"
+            color: Colors.color2
             font.pixelSize: 10
         }
     }

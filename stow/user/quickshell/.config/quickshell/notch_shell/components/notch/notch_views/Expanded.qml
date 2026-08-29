@@ -18,6 +18,8 @@ Views.NotchView {
     }
 
     RowLayout {
+        Layout.bottomMargin: 20
+        Layout.alignment: Qt.AlignHCenter
         Elements.HyprlandWorkspace {}
         Elements.AppLauncher {
             appName: "zen"

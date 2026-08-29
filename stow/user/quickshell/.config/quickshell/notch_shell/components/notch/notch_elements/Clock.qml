@@ -21,6 +21,7 @@ Elements.NotchElement {
     Text {
         id: content
 
+        font.family: "Geistmono Nerd Font"
         text: Qt.formatTime(currentTime, clock_element.format)
         color: "white"
         font.pixelSize: size

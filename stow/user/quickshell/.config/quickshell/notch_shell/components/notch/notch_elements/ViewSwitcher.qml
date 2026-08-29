@@ -4,6 +4,7 @@ import Quickshell
 import Quickshell.Hyprland
 import '../notch_elements' as Elements
 import '.' as Views
+import "../../.."
 
 Elements.NotchElement {
     required property var notch
@@ -19,7 +20,7 @@ Elements.NotchElement {
         width: 25
         height: 25
         radius: 15
-        color: "#302c38"
+        color: "transparent"
 
         scale: mouse.pressed ? 0.9 : 1
 
@@ -31,9 +32,10 @@ Elements.NotchElement {
         }
 
         Text {
+            font.family: "Geistmono Nerd Font"
             anchors.centerIn: parent
             text: viewName
-            color: "white"
+            color: Colors.color2
             font.pixelSize: 10
         }
 

@@ -28,6 +28,7 @@ Elements.NotchElement {
 
         Text {
             anchors.centerIn: parent
+            font.family: "Geistmono Nerd Font"
             text: appName
             color: "white"
         }
