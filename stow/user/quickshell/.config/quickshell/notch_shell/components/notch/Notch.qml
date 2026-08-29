@@ -14,9 +14,12 @@ Rectangle {
         topMargin: 5
         horizontalCenter: parent.horizontalCenter
     }
+    
+    property int widthPadding : 10
+    property int heightPadding : 10
 
-    width: loader.item?.implicitWidth ?? 0
-    height: loader.item?.implicitHeight ?? 0
+    width: ( loader.item?.implicitWidth ?? 0 )+ root.widthPadding * 2 
+    height: ( loader.item?.implicitHeight ?? 0 )+ root.heightPadding * 2
 
     // Styling
     color: Colors.background

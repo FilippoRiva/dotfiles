@@ -34,6 +34,7 @@ Elements.NotchElement {
             anchors.centerIn: parent
             text: viewName
             color: "white"
+            font.pixelSize: 10
         }
 
         MouseArea {

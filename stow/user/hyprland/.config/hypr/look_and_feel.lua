@@ -9,7 +9,7 @@ hl.config({
     general = {
         gaps_in  = 5,
         gaps_out = {
-            top = 42,
+            top = 60,
             right = 10,
             bottom= 10,
             left= 10,

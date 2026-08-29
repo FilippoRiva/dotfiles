@@ -8,18 +8,18 @@ import '.' as Views
 Views.NotchView{
     id : notch_view
     RowLayout {
-        height: 10
-        width: 10
         spacing: 0
+        Elements.HyprlandWorkspace {
+        }
         Elements.Clock {
             Layout.margins: 10
             size: 10
+            format: "HH:mm"
         }
         Elements.ViewSwitcher {
             notch : notch_view.notch
             view : notch_view.notch.expandedView
             viewName : "↓"
-            Layout.rightMargin: 9
         }
     }
 }

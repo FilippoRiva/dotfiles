@@ -2,11 +2,13 @@ import QtQuick
 import '.' as Elements
 
 Elements.NotchElement {
+    id : clock_element
     width: content.width
     height: content.height
     property int size: 48
 
     property date currentTime: new Date()
+    property string format: "HH:mm:ss"
 
     Timer {
         interval: 1000
@@ -19,7 +21,7 @@ Elements.NotchElement {
     Text {
         id: content
 
-        text: Qt.formatTime(currentTime, "HH:mm:ss")
+        text: Qt.formatTime(currentTime, clock_element.format)
         color: "white"
         font.pixelSize: size
     }

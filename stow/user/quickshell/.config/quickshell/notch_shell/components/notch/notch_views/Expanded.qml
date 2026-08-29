@@ -18,8 +18,9 @@ Views.NotchView {
     }
 
     RowLayout {
+        Elements.HyprlandWorkspace {}
         Elements.AppLauncher {
-            appName: "Zen"
+            appName: "zen"
             appCommand: "zen-browser"
         }
         Elements.AppLauncher {
