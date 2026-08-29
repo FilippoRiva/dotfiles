@@ -5,6 +5,7 @@ import "components/notch"
 ShellRoot{
   Variants {
     model: Quickshell.screens
+    // qmllint disable uncreatable-type
     PanelWindow {
         property var modelData
         screen: modelData

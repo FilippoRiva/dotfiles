@@ -1,12 +1,11 @@
+pragma ComponentBehavior: Bound
 import QtQuick
-import QtQuick.Layouts
-import Quickshell
 import Quickshell.Hyprland
 import "notch_views" as Views
 import "../../"
 
 Rectangle {
-    id: root
+    id: notch_root
 
     // Positioning
     anchors {
@@ -18,8 +17,14 @@ Rectangle {
     property int widthPadding : 2
     property int heightPadding : 0
 
-    width: ( loader.item?.implicitWidth ?? 0 )+ root.widthPadding * 2 
-    height: ( loader.item?.implicitHeight ?? 0 )+ root.heightPadding * 2
+    width: {
+        let visualItem = loader.item as Item
+        return (visualItem ? visualItem.implicitWidth : 0) + notch_root.widthPadding * 2
+    }
+    height: {
+        let visualItem = loader.item as Item
+        return (visualItem ? visualItem.implicitHeight : 0) + notch_root.heightPadding * 2
+    }
 
     // Styling
     color: Colors.background
@@ -27,13 +32,15 @@ Rectangle {
 
     // Components 
     Component {
+        // qmllint disable import
         id: defaultViewComponent
-        Views.Default { notch : root } 
+        // qmllint enable import
+        Views.Default { notch : notch_root } 
     }
 
     Component {
         id: expandedViewComponent
-        Views.Expanded { notch: root }
+        Views.Expanded { notch: notch_root }
     }
 
     property Component defaultView: defaultViewComponent
@@ -44,20 +51,20 @@ Rectangle {
 
     Loader {
         id: loader
-        sourceComponent: root.view
+        sourceComponent: notch_root.view
         anchors.centerIn: parent
     }
 
     // Shortcuts
-    GlobalShortcut {
+    GlobalShortcut { // qmllint disable unresolved-type
         name: "toggleNotch"
 
         onPressed: {
-            root.view = root.view == defaultView ? expandedView : defaultView
+            notch_root.view = notch_root.view == notch_root.defaultView ? notch_root.expandedView : notch_root.defaultView
         }
     }
 
-    // Animations
+    // Notch Animations
     Behavior on width {
         NumberAnimation {
             duration: 300

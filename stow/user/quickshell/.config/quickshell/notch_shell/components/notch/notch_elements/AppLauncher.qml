@@ -3,6 +3,8 @@ import QtQuick
 import '.' as Elements
 
 Elements.NotchElement {
+    id: appLauncher
+
     required property string appName
     required property string appCommand
 
@@ -29,7 +31,7 @@ Elements.NotchElement {
         Text {
             anchors.centerIn: parent
             font.family: "Geistmono Nerd Font"
-            text: appName
+            text: appLauncher.appName
             color: "white"
         }
 
@@ -39,8 +41,8 @@ Elements.NotchElement {
             cursorShape: Qt.PointingHandCursor
 
             onClicked: {
-                console.log("Launching " + appName)
-                Quickshell.execDetached([appCommand])
+                console.log("Launching " + appLauncher.appName)
+                Quickshell.execDetached([appLauncher.appCommand])
             }
         }
     }

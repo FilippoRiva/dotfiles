@@ -1,4 +1,3 @@
-import Quickshell
 import QtQuick
 import Quickshell.Hyprland
 import '.' as Elements

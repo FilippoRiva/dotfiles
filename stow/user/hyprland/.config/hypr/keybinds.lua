@@ -17,7 +17,8 @@ hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd("hyprctl switchxkblayout current 
 -- Programs startup
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(PROGRAMS.terminal))
 hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exec_cmd(PROGRAMS.fileManager))
-hl.bind(mainMod .. " + SHIFT + D", hl.dsp.exec_cmd(PROGRAMS.menu))
+--hl.bind(mainMod .. " + SHIFT + D", hl.dsp.exec_cmd(PROGRAMS.menu))
+hl.bind(mainMod .. " + SHIFT + D", hl.dsp.global("quickshell:toggleNotch"))
 hl.bind(mainMod .. " + SHIFT + A", hl.dsp.exec_cmd(PROGRAMS.browser))
 hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd(PROGRAMS.musicPlayer))
 hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd(PROGRAMS.screenCapture))
@@ -59,6 +60,3 @@ hl.bind("XF86AudioNext",  hl.dsp.exec_cmd("playerctl next"),       { locked = tr
 hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
-
--- Quickshell bindings
-hl.bind(mainMod .. " + SHIFT + D", hl.dsp.global("quickshell:toggleNotch"))

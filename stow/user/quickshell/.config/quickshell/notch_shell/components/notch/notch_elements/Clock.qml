@@ -15,15 +15,15 @@ Elements.NotchElement {
         running: true
         repeat: true
 
-        onTriggered: currentTime = new Date()
+        onTriggered: clock_element.currentTime = new Date()
     }
 
     Text {
         id: content
 
         font.family: "Geistmono Nerd Font"
-        text: Qt.formatTime(currentTime, clock_element.format)
+        text: Qt.formatTime(clock_element.currentTime, clock_element.format)
         color: "white"
-        font.pixelSize: size
+        font.pixelSize: clock_element.size
     }
 }

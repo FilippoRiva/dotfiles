@@ -1,9 +1,6 @@
 import QtQuick
 import QtQuick.Layouts
-import Quickshell
-import Quickshell.Hyprland
 import '../notch_elements' as Elements
-import '../Notch.qml' as Notch
 import '.' as Views
 
 Views.NotchView {

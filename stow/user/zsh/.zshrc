@@ -45,3 +45,7 @@ function y() {
 	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd" || builtin true
 	command rm -f -- "$tmp"
 }
+
+# ENV
+
+export QML_IMPORT_PATH=/usr/lib/qt6/qml
