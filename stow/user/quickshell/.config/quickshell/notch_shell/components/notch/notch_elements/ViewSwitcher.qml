@@ -43,7 +43,15 @@ Elements.NotchElement {
             cursorShape: Qt.PointingHandCursor
 
             onClicked: {
-            view_switcher.notch.view = view_switcher.view
+                view_switcher.notch.view = view_switcher.view
+                content.rotation= 180
+            }
+        }
+
+        Behavior on rotation{
+            NumberAnimation {
+                duration: 100
+                easing.type: Easing.OutCubic
             }
         }
     }

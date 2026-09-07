@@ -131,4 +131,5 @@
 "qt-qml.qmlls.useQmlImportPathEnvVar": true,
 "qt-qml.qmlls.customExePath": "/usr/bin/qmlls6",
 "qt-qml.doNotAskForQmllsDownload": true,
+"qt-core.showWelcomePageOnActivation": false,
 }

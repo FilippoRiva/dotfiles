@@ -7,6 +7,7 @@ Elements.NotchElement {
 
     required property string appName
     required property string appCommand
+    required property var notch
 
     width: content.width
     height: content.height
@@ -43,6 +44,7 @@ Elements.NotchElement {
             onClicked: {
                 console.log("Launching " + appLauncher.appName)
                 Quickshell.execDetached([appLauncher.appCommand])
+                appLauncher.notch.view = appLauncher.notch.defaultView
             }
         }
     }

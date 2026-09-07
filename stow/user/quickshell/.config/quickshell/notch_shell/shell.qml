@@ -21,7 +21,8 @@ ShellRoot{
         color: "transparent"
 
         Notch { 
-          id: notch 
+          id: notch
+          screen: root.screen
         }
 
         mask: Region {

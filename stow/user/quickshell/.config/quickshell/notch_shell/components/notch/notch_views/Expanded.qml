@@ -21,14 +21,17 @@ Views.NotchView {
         Elements.AppLauncher {
             appName: "zen"
             appCommand: "zen-browser"
+            notch: notch_view.notch
         }
         Elements.AppLauncher {
             appName: "kitty"
             appCommand: "kitty"
+            notch: notch_view.notch
         }
         Elements.AppLauncher {
             appName: "code"
             appCommand: "vscodium"
+            notch: notch_view.notch
         }
         Elements.ViewSwitcher {
             viewName: "↑" 

@@ -1,11 +1,15 @@
 pragma ComponentBehavior: Bound
 import QtQuick
 import Quickshell.Hyprland
+import Quickshell
 import "notch_views" as Views
 import "../../"
 
 Rectangle {
     id: notch_root
+    clip: true
+    property int animationSpeed: 300
+    required property ShellScreen screen
 
     // Positioning
     anchors {
@@ -51,7 +55,7 @@ Rectangle {
 
     Loader {
         id: loader
-        sourceComponent: notch_root.view
+        sourceComponent: notch_root.defaultView
         anchors.centerIn: parent
     }
 
@@ -60,21 +64,51 @@ Rectangle {
         name: "toggleNotch"
 
         onPressed: {
-            notch_root.view = notch_root.view == notch_root.defaultView ? notch_root.expandedView : notch_root.defaultView
+            notch_root.view = notch_root.screen.name == Hyprland.focusedMonitor.name && notch_root.view == notch_root.defaultView ? notch_root.expandedView : notch_root.defaultView
         }
     }
+
+    SequentialAnimation {
+        id: notchTransition
+
+        NumberAnimation {
+            target: loader
+            property: "opacity"
+            from: 1
+            to: 0
+            duration: notch_root.animationSpeed / 2
+            easing.type: Easing.OutCubic
+        }
+
+        ScriptAction {
+            script: {
+                loader.sourceComponent = notch_root.view
+            }
+        }
+
+        NumberAnimation {
+            target: loader
+            property: "opacity"
+            from: 0
+            to: 1
+            duration: notch_root.animationSpeed / 2
+            easing.type: Easing.OutCubic
+        }
+    }
+
+    onViewChanged: notchTransition.start()
 
     // Notch Animations
     Behavior on width {
         NumberAnimation {
-            duration: 300
+            duration: notch_root.animationSpeed / 2
             easing.type: Easing.OutCubic
         }
     }
 
     Behavior on height {
         NumberAnimation {
-            duration: 300
+            duration: notch_root.animationSpeed / 2
             easing.type: Easing.OutCubic
         }
     }
