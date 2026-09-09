@@ -15,7 +15,7 @@ Views.NotchView{
         }
         Elements.ViewSwitcher {
             notch : notch_view.notch
-            view : notch_view.notch.expandedView
+            view : notch_view.notch.launcherView
             viewName : "↓"
         }
     }

@@ -43,12 +43,19 @@ Rectangle {
     }
 
     Component {
-        id: expandedViewComponent
-        Views.Expanded { notch: notch_root }
+        id: launcherViewComponent
+        Views.Launcher { notch: notch_root }
+    }
+
+    Component {
+        id: controlPanelViewComponent
+        Views.ControlPanel { notch: notch_root }
     }
 
     property Component defaultView: defaultViewComponent
-    property Component expandedView: expandedViewComponent
+    property Component launcherView: launcherViewComponent
+    property Component controlPanelView: controlPanelViewComponent
+    readonly property bool isExpanded: view !== defaultView
 
     // Content
     property Component view: defaultView
@@ -64,39 +71,22 @@ Rectangle {
         name: "toggleNotch"
 
         onPressed: {
-            notch_root.view = notch_root.screen.name == Hyprland.focusedMonitor.name && notch_root.view == notch_root.defaultView ? notch_root.expandedView : notch_root.defaultView
-        }
-    }
-
-    SequentialAnimation {
-        id: notchTransition
-
-        NumberAnimation {
-            target: loader
-            property: "opacity"
-            from: 1
-            to: 0
-            duration: notch_root.animationSpeed / 2
-            easing.type: Easing.OutCubic
-        }
-
-        ScriptAction {
-            script: {
-                loader.sourceComponent = notch_root.view
+            if (notch_root.screen.name != Hyprland.focusedMonitor.name) return
+            if (notch_root.view == notch_root.defaultView) {
+                notch_root.view = notch_root.launcherView
+            } else if (notch_root.view == notch_root.launcherView) {
+                notch_root.view = notch_root.controlPanelView
+            } else {
+                notch_root.view = notch_root.defaultView
             }
         }
-
-        NumberAnimation {
-            target: loader
-            property: "opacity"
-            from: 0
-            to: 1
-            duration: notch_root.animationSpeed / 2
-            easing.type: Easing.OutCubic
-        }
     }
 
-    onViewChanged: notchTransition.start()
+    onViewChanged: {
+        loader.sourceComponent = notch_root.view
+        var win = notch_root.Window.window
+        if (win) win.requestActivate()
+    }
 
     // Notch Animations
     Behavior on width {

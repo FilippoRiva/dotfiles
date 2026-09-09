@@ -16,11 +16,58 @@ Elements.NotchElement {
         scale: 1
 
         Text {
+            id: label
             font.family: "Geistmono Nerd Font"
             anchors.centerIn: parent
             text: Hyprland.focusedWorkspace?.id ?? "?"
             color: Colors.color2
             font.pixelSize: 10
+
+            property int prevId: Hyprland.focusedWorkspace?.id ?? 1
+
+            onTextChanged: {
+                let newId = Hyprland.focusedWorkspace?.id ?? 1
+                if (newId > prevId) {
+                    rotAnim.to = 360
+                } else {
+                    rotAnim.to = -360
+                }
+                prevId = newId
+                switchAnimation.restart()
+            }
+        }
+
+        ParallelAnimation {
+            id: switchAnimation
+
+            onFinished: label.rotation = 0
+
+            SequentialAnimation {
+                NumberAnimation {
+                    target: label
+                    property: "opacity"
+                    to: 0
+                    duration: 150
+                    easing.type: Easing.OutCubic
+                }
+                NumberAnimation {
+                    target: label
+                    property: "opacity"
+                    to: 1
+                    duration: 150
+                    easing.type: Easing.OutCubic
+                }
+            }
+
+            NumberAnimation {
+                id: rotAnim
+                target: label
+                property: "rotation"
+                from: 0
+                to: 360
+                duration: 300
+                easing.type: Easing.OutCubic
+            }
         }
 
         MouseArea {
@@ -33,8 +80,7 @@ Elements.NotchElement {
                 let max_workspaces = 8
                 let next = (focused + 1 )% max_workspaces
                 let prev = focused > 1 ? focused - 1 : max_workspaces
-                console.log(Hyprland.focusedWorkspace)
-                if ( mouseArea.pressedButtons == Qt.LeftButton ) {
+                if ( mouseArea.pressedButtons == Qt.RightButton ) {
                     Hyprland.dispatch("hl.dsp.focus({ workspace = "+ next +" })")
                 } else {
                     Hyprland.dispatch("hl.dsp.focus({ workspace = "+ prev +" })")

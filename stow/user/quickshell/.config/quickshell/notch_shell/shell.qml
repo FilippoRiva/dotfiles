@@ -1,4 +1,5 @@
 import Quickshell
+import Quickshell.Hyprland._FocusGrab
 import "components/notch"
 
 // wrapper for multi screen layout importing main components
@@ -10,6 +11,7 @@ ShellRoot{
         property var modelData
         screen: modelData
         id: root
+        focusable: true
 
         anchors {
             top: true
@@ -23,6 +25,11 @@ ShellRoot{
         Notch { 
           id: notch
           screen: root.screen
+        }
+
+        HyprlandFocusGrab {
+            active: notch.isExpanded
+            windows: [root]
         }
 
         mask: Region {

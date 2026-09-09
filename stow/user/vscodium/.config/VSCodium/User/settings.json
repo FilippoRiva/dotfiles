@@ -33,56 +33,141 @@
 "window.menuBarVisibility": "hidden",
 
 // Vim
+"vim.leader": "<space>",
 "vim.easymotion": true,
 "vim.incsearch": true,
-"vim.useSystemClipboard": true,
 "vim.useCtrlKeys": true,
 "vim.hlsearch": false,
-"extensions.experimental.affinity": {
-    "vscodevim.vim": 1 //improves performance
-},
-
-// Vim - Leader 
-"vim.leader": "<space>",
-"vim.normalModeKeyBindingsNonRecursive": [
+"vim.ignorecase": true,
+"vim.smartcase": true,
+"vim.useSystemClipboard": true,
+"vim.sneak": true,
+"vim.surround": true,
+"vim.replaceWithRegister": true,
+"vim.camelCaseMotion.enable": true,
+"vim.argumentObjectSeparators": [",", ";"],
+"vim.argumentObjectOpeningDelimiters": ["(", "["],
+"vim.argumentObjectClosingDelimiters": [")", "]"],
+"vim.insertModeKeyBindings": [
     {
-        "before": ["<leader>", "F"],
-        "commands": ["workbench.action.findInFiles"]
+        "before": ["j", "j"],
+        "after": ["<Esc>"]
     },
     {
-        "before": ["<leader>", "f"],
-        "commands": ["workbench.action.quickOpen"]
+        "before": ["j", "k"],
+        "after": ["<Esc>"]
     },
     {
-        "before": ["<leader>", "p"],
-        "commands": ["workbench.action.showCommands"]
+        "before": ["<C-s>"],
+        "commands": [":w"]
     },
     {
-        "before": ["<leader>", "e"],
-        "commands": ["workbench.explorer.fileView.focus"]
+        "before": ["<A-j>"],
+        "commands": ["editor.action.moveLinesDownAction"]
     },
     {
-        "before": ["<leader>", "g"],
-        "commands": ["workbench.scm.focus"]
-    },
-    {
-        "before": ["<leader>", "|"],
-        "commands": ["workbench.action.splitEditor"]
-    },
-    {
-        "before": ["<leader>", "/"],
-        "commands": ["workbench.action.terminal.toggleTerminal"]
+        "before": ["<A-k>"],
+        "commands": ["editor.action.moveLinesUpAction"]
     }
 ],
 
-// Vim - Keys to leave to vscode
+"vim.normalModeKeyBindings": [
+    {
+        "before": ["<tab>"],
+        "commands": ["workbench.action.nextEditor"]
+    },
+    {
+        "before": ["<S-tab>"],
+        "commands": ["workbench.action.previousEditor"]
+    },
+    {
+        "before": ["g", "d"],
+        "commands": ["editor.action.revealDefinition"]
+    },
+    {
+        "before": ["g", "r"],
+        "commands": ["editor.action.goToReferences"]
+    },
+    {
+        "before": ["g", "i"],
+        "commands": ["editor.action.goToImplementation"]
+    },
+    {
+        "before": ["K"],
+        "commands": ["editor.action.showHover"]
+    },
+    {
+        "before": ["[", "d"],
+        "commands": ["editor.action.marker.prev"]
+    },
+    {
+        "before": ["]", "d"],
+        "commands": ["editor.action.marker.next"]
+    },
+    {
+        "before": ["g", "h"],
+        "after": ["^"]
+    },
+    {
+        "before": ["g", "l"],
+        "after": ["$"]
+    }
+],
+"vim.visualModeKeyBindings": [
+    {
+        "before": [">"],
+        "after": [">", "g", "v"]
+    },
+    {
+        "before": ["<"],
+        "after": ["<", "g", "v"]
+    },
+    {
+        "before": ["g", "c", "c"],
+        "commands": ["editor.action.commentLine", "extension.vim_escape"]
+    },
+    {
+        "before": ["g", "c"],
+        "commands": ["editor.action.commentLine"]
+    },
+    {
+        "before": ["g", "h"],
+        "after": ["^"]
+    },
+    {
+        "before": ["g", "l"],
+        "after": ["$"]
+    }
+],
+"vim.normalModeKeyBindingsNonRecursive": [
+    {
+        "before": ["<C-n>"],
+        "commands": [":nohl"]
+    },
+    {
+        "before": ["u"],
+        "after": ["u"]
+    },
+    {
+        "before": ["<C-r>"],
+        "after": ["<C-r>"]
+    }
+],
 "vim.handleKeys": {
     "<C-a>": false,
     "<C-f>": false,
     "<C-w>": false,
+    "<C-c>": false,
+    "<C-v>": false,
+    "<C-x>": false,
+    "<C-z>": false,
+    "<C-y>": false
 },
+"extensions.experimental.affinity": {
+    "vscodevim.vim": 1
+}
 
-// Latex Worksshop
+// Latex Workshop
 "latex-workshop.latex.autoClean.run": "onBuilt",
 "latex-workshop.latex.outDir": "%DIR%/out",
 "latex-workshop.latex.auxDir": "%DIR%/out",
@@ -117,6 +202,8 @@
   // misterious additional src folder
   "src/*"
 ],
+
+// QT
 "workbench.editorAssociations": {
     "{git,gitlens,chat-editing-snapshot-text-model,copilot,git-graph,git-graph-3}:/**/*.qrc": "default",
     "*.qrc": "qt-core.qrcEditor"
@@ -127,9 +214,11 @@
         "path": "/usr/bin/qmake"
     }
 ],
-"git.autofetch": true,
 "qt-qml.qmlls.useQmlImportPathEnvVar": true,
 "qt-qml.qmlls.customExePath": "/usr/bin/qmlls6",
 "qt-qml.doNotAskForQmllsDownload": true,
 "qt-core.showWelcomePageOnActivation": false,
+
+// Git
+"git.autofetch": true,
 }

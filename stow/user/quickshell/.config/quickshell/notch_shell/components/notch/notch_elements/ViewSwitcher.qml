@@ -44,7 +44,6 @@ Elements.NotchElement {
 
             onClicked: {
                 view_switcher.notch.view = view_switcher.view
-                content.rotation= 180
             }
         }
 
