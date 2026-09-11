@@ -15,18 +15,51 @@ Views.NotchView {
 
     RowLayout {
         Layout.margins: 10
+        Layout.fillWidth: true
+        Elements.MusicController {}
+    }
+
+    RowLayout {
+        Layout.fillWidth: true
+        Elements.Divider { Layout.fillWidth: true }
+    }
+
+    RowLayout {
+        Layout.margins: 10
         Layout.alignment: Qt.AlignHCenter
         Elements.AudioController {}
     }
 
     RowLayout {
         Layout.fillWidth: true
+        Elements.Divider { Layout.fillWidth: true }
+    }
+
+    RowLayout {
+        Layout.margins: 10
+        Layout.alignment: Qt.AlignHCenter
+        Elements.Battery {}
+        Elements.Battery {}
+        Elements.Battery {}
+        Elements.Battery {}
+    }
+
+    RowLayout {
+        Layout.fillWidth: true
+        Elements.Divider { Layout.fillWidth: true }
+    }
+
+    RowLayout {
+        Layout.fillWidth: true
+        Layout.margins: 5
         Elements.WorkspaceDots {}
         Item { Layout.fillWidth: true }
-        Elements.ViewSwitcher {
-            viewName: "\u2191"
-            view: notch_view.notch.defaultView
-            notch: notch_view.notch
+        Elements.IconButton {
+            backgroundColor: "transparent"
+            fontSize: 12
+            icon: "home"
+            button_enabled: true
+            onActivate: () => notch_view.notch.view = notch_view.notch.defaultView
         }
     }
 }

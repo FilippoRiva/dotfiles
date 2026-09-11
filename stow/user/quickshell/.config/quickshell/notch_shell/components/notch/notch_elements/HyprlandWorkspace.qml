@@ -4,8 +4,11 @@ import '.' as Elements
 import "../../.."
 
 Elements.NotchElement {
+    id: root
     width: content.width
     height: content.height
+    property int fontSize: 12 
+    property string font: "Jetbrains Mono"
 
     Rectangle {
         id: content
@@ -17,11 +20,11 @@ Elements.NotchElement {
 
         Text {
             id: label
-            font.family: "Geistmono Nerd Font"
+            font.family: root.font
             anchors.centerIn: parent
             text: Hyprland.focusedWorkspace?.id ?? "?"
             color: Colors.color2
-            font.pixelSize: 10
+            font.pixelSize: root.fontSize
 
             property int prevId: Hyprland.focusedWorkspace?.id ?? 1
 

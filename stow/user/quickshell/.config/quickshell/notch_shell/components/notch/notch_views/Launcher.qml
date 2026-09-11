@@ -21,14 +21,23 @@ Views.NotchView {
     }
 
     RowLayout {
+        Layout.fillWidth: true
+        Elements.Divider { Layout.fillWidth: true }
+    }
+
+    RowLayout {
         Layout.topMargin: 0
+        Layout.leftMargin: 5
+        Layout.rightMargin: 5
         Layout.fillWidth: true
         Elements.WorkspaceDots {}
         Item { Layout.fillWidth: true }
-        Elements.ViewSwitcher {
-            viewName: "\u2191"
-            view: notch_view.notch.defaultView
-            notch: notch_view.notch
+        Elements.IconButton {
+            backgroundColor: "transparent"
+            fontSize: 12
+            icon: "home"
+            button_enabled: true
+            onActivate: () => notch_view.notch.view = notch_view.notch.defaultView
         }
     }
 }

@@ -16,8 +16,10 @@ Elements.NotchElement {
 
     required property var notch
     property var terminalCommand: ["kitty", "-e"]
+    property string font: "Geistmono Nerd Font"
 
-Rectangle {
+
+    Rectangle {
         id: launcher
 
         width: 500
@@ -145,7 +147,7 @@ Rectangle {
                     spacing: 8
 
                     Text {
-                        font.family: "Geistmono Nerd Font"
+                        font.family: root.font
                         text: "󰘳"
                         color: Colors.color6
                         font.pixelSize: 16
@@ -259,7 +261,7 @@ Rectangle {
                                     }
 
                                     Text {
-                                        font.family: "Geistmono Nerd Font"
+                                        font.family: root.font
                                         text: ""
                                         color: entry.index === list.currentIndex ? Colors.background : Colors.color6
                                         font.pixelSize: 11

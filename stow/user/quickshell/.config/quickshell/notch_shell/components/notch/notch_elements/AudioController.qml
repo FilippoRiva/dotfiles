@@ -7,13 +7,14 @@ import '../../../'
 Elements.NotchElement {
     id: root
     implicitHeight: 30
-    implicitWidth: 200
+    implicitWidth: 300
+    property string iconFont: "Material Symbols Rounded"
 
     RowLayout {
         anchors.fill: parent
         spacing: 8
         Text {
-            font.family: "Material Symbols Rounded"
+            font.family: root.iconFont
             text: Audio.value >= 0.5 ? "volume_up" : (Audio.value === 0 ? "volume_off" : "volume_down")
             font.pixelSize: 24
             color: Colors.foreground

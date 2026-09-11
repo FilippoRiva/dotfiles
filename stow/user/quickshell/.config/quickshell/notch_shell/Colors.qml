@@ -5,6 +5,7 @@ import Quickshell
 Singleton {
     property string foreground: "#c9c8ba"
     property string background: "#242129"
+    property string background2: "#302c38"
     property string color1: "#956566"
     property string color2: "#C4656C"
     property string color3: "#938C79"

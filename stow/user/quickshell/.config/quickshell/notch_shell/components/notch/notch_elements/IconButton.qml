@@ -1,13 +1,16 @@
+import './' as Elements
 import QtQuick
-import '../notch_elements' as Elements
-import "../../.."
+import '../../../'
 
 Elements.NotchElement {
-    id: view_switcher 
+    id: root
 
-    required property var notch
-    required property Component view
-    required property string viewName
+    required property string icon
+    property bool button_enabled: true
+    property var onActivate
+    property string backgroundColor: Colors.background2
+    property int fontSize: 18
+    property string iconFont: "Material Symbols Rounded"
 
     width: content.width
     height: content.height
@@ -18,7 +21,7 @@ Elements.NotchElement {
         width: 25
         height: 25
         radius: 15
-        color: "transparent"
+        color: root.backgroundColor
 
         scale: mouse.pressed ? 0.9 : 1
 
@@ -30,11 +33,11 @@ Elements.NotchElement {
         }
 
         Text {
-            font.family: "Geistmono Nerd Font"
+            font.family: root.iconFont
             anchors.centerIn: parent
-            text: view_switcher.viewName
-            color: Colors.color2
-            font.pixelSize: 10
+            text: root.icon
+            color: root.button_enabled ? Colors.foreground : Colors.color6
+            font.pixelSize: root.fontSize
         }
 
         MouseArea {
@@ -43,14 +46,7 @@ Elements.NotchElement {
             cursorShape: Qt.PointingHandCursor
 
             onClicked: {
-                view_switcher.notch.view = view_switcher.view
-            }
-        }
-
-        Behavior on rotation{
-            NumberAnimation {
-                duration: 100
-                easing.type: Easing.OutCubic
+                if (root.button_enabled && root.onActivate) root.onActivate()
             }
         }
     }

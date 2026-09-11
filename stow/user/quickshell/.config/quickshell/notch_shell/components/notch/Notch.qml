@@ -32,6 +32,7 @@ Rectangle {
 
     // Styling
     color: Colors.background
+    border.color: Colors.background2
     radius : 10
 
     // Components 
@@ -75,7 +76,7 @@ Rectangle {
             if (notch_root.view == notch_root.defaultView) {
                 notch_root.view = notch_root.launcherView
             } else if (notch_root.view == notch_root.launcherView) {
-                notch_root.view = notch_root.controlPanelView
+                notch_root.view = notch_root.defaultView
             } else {
                 notch_root.view = notch_root.defaultView
             }

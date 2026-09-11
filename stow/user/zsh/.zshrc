@@ -49,3 +49,4 @@ function y() {
 # ENV
 
 export QML_IMPORT_PATH=/usr/lib/qt6/qml
+export EDITOR=nvim

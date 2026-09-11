@@ -2,10 +2,11 @@ import QtQuick
 import '.' as Elements
 
 Elements.NotchElement {
-    id : clock_element
+    id : root
     width: content.width
     height: content.height
     property int size: 48
+    property string font: "Jetbrains Mono"
 
     property date currentTime: new Date()
     property string format: "HH:mm:ss"
@@ -15,15 +16,15 @@ Elements.NotchElement {
         running: true
         repeat: true
 
-        onTriggered: clock_element.currentTime = new Date()
+        onTriggered: root.currentTime = new Date()
     }
 
     Text {
         id: content
 
-        font.family: "Geistmono Nerd Font"
-        text: Qt.formatTime(clock_element.currentTime, clock_element.format)
+        font.family: root.font
+        text: Qt.formatTime(root.currentTime, root.format)
         color: "white"
-        font.pixelSize: clock_element.size
+        font.pixelSize: root.size
     }
 }
