@@ -6,16 +6,36 @@ import "notch_views" as Views
 import "../../"
 
 Rectangle {
-    id: notch_root
+    id: root
     clip: true
+
     property int animationSpeed: 300
+    property bool hidden: false
+    property Component lastView : defaultView
+    required property PanelWindow panelWindow
     required property ShellScreen screen
+
+    enum Position { Top, Center, Bottom }
+    property int position: Notch.Position.Top
 
     // Positioning
     anchors {
         top: parent.top
-        topMargin: 5
+        topMargin: root.position == Notch.Position.Top ? 5 : 0
         horizontalCenter: parent.horizontalCenter
+    }
+
+    transform : Translate {
+        id: translation
+
+        y: root.hidden  && root.view == root.defaultView ? -40 : 0
+
+        Behavior on y {
+            NumberAnimation {
+                duration: root.animationSpeed
+                easing.type: Easing.OutCubic
+            }
+        }
     }
     
     property int widthPadding : 2
@@ -23,11 +43,12 @@ Rectangle {
 
     width: {
         let visualItem = loader.item as Item
-        return (visualItem ? visualItem.implicitWidth : 0) + notch_root.widthPadding * 2
+        return (visualItem ? visualItem.implicitWidth : 0) + root.widthPadding * 2
     }
+
     height: {
         let visualItem = loader.item as Item
-        return (visualItem ? visualItem.implicitHeight : 0) + notch_root.heightPadding * 2
+        return (visualItem ? visualItem.implicitHeight : 0) + root.heightPadding * 2
     }
 
     // Styling
@@ -35,22 +56,20 @@ Rectangle {
     border.color: Colors.background2
     radius : 10
 
-    // Components 
+    // Components (for dynamic load)
     Component {
-        // qmllint disable import
         id: defaultViewComponent
-        // qmllint enable import
-        Views.Default { notch : notch_root } 
+        Views.Default { notch : root } 
     }
 
     Component {
         id: launcherViewComponent
-        Views.Launcher { notch: notch_root }
+        Views.Launcher { notch: root }
     }
 
     Component {
         id: controlPanelViewComponent
-        Views.ControlPanel { notch: notch_root }
+        Views.ControlPanel { notch: root }
     }
 
     property Component defaultView: defaultViewComponent
@@ -63,7 +82,7 @@ Rectangle {
 
     Loader {
         id: loader
-        sourceComponent: notch_root.defaultView
+        sourceComponent: root.defaultView
         anchors.centerIn: parent
     }
 
@@ -72,35 +91,62 @@ Rectangle {
         name: "toggleNotch"
 
         onPressed: {
-            if (notch_root.screen.name != Hyprland.focusedMonitor.name) return
-            if (notch_root.view == notch_root.defaultView) {
-                notch_root.view = notch_root.launcherView
-            } else if (notch_root.view == notch_root.launcherView) {
-                notch_root.view = notch_root.defaultView
+            if (root.screen.name != Hyprland.focusedMonitor.name) return
+            if (root.view == root.defaultView) {
+                root.view = root.launcherView
+            } else if (root.view == root.launcherView) {
+                root.view = root.defaultView
             } else {
-                notch_root.view = notch_root.defaultView
+                root.view = root.defaultView
             }
         }
     }
 
+    GlobalShortcut { // qmllint disable unresolved-type
+        name: "hideNotch"
+
+        onPressed: {
+            if ( root.hidden ) { 
+                root.show()                
+            } else { 
+                root.hide()
+            }
+        }
+    }
+
+
     onViewChanged: {
-        loader.sourceComponent = notch_root.view
-        var win = notch_root.Window.window
+        loader.sourceComponent = root.view
+        var win = root.Window.window
         if (win) win.requestActivate()
+    }
+
+    function hide() {
+        panelWindow.exclusive = false
+        root.hidden = true
+        root.lastView = root.view
+        root.view = root.defaultView
+    }
+
+    function show() { 
+        panelWindow.exclusive = true
+        root.hidden = false
+        root.view = root.lastView
     }
 
     // Notch Animations
     Behavior on width {
         NumberAnimation {
-            duration: notch_root.animationSpeed / 2
+            duration: root.animationSpeed / 2
             easing.type: Easing.OutCubic
         }
     }
 
     Behavior on height {
         NumberAnimation {
-            duration: notch_root.animationSpeed / 2
+            duration: root.animationSpeed / 2
             easing.type: Easing.OutCubic
         }
     }
+
 }
