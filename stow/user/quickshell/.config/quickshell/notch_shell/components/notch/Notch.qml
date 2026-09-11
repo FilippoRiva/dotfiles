@@ -86,20 +86,27 @@ Rectangle {
         anchors.centerIn: parent
     }
 
+    function toggleView (viewToToggle) {
+        if (root.screen.name != Hyprland.focusedMonitor.name) return
+        if (root.view == root.defaultView) {
+            root.view = viewToToggle
+        } else {
+            root.view = root.defaultView
+        }
+    }
+
+
     // Shortcuts
     GlobalShortcut { // qmllint disable unresolved-type
-        name: "toggleNotch"
+        name: "toggleLauncher"
 
-        onPressed: {
-            if (root.screen.name != Hyprland.focusedMonitor.name) return
-            if (root.view == root.defaultView) {
-                root.view = root.launcherView
-            } else if (root.view == root.launcherView) {
-                root.view = root.defaultView
-            } else {
-                root.view = root.defaultView
-            }
-        }
+        onPressed: root.toggleView(root.launcherView)
+    }
+
+    GlobalShortcut { // qmllint disable unresolved-type
+        name: "toggleControlPanel"
+
+        onPressed: root.toggleView(root.controlPanelView)
     }
 
     GlobalShortcut { // qmllint disable unresolved-type
