@@ -77,10 +77,16 @@ Rectangle {
         Views.NetworkPanel { notch: root }
     }
 
+    Component {
+        id: workPanelViewComponent
+        Views.WorkPanel { notch: root }
+    }
+
     property Component defaultView: defaultViewComponent
     property Component launcherView: launcherViewComponent
     property Component controlPanelView: controlPanelViewComponent
     property Component networkPanelView: networkPanelViewComponent
+    property Component workPanelView: workPanelViewComponent
     readonly property bool isExpanded: view !== defaultView
 
     // Content
@@ -113,6 +119,12 @@ Rectangle {
         name: "toggleControlPanel"
 
         onPressed: root.toggleView(root.controlPanelView)
+    }
+
+    GlobalShortcut { // qmllint disable unresolved-type
+        name: "toggleWorkPanel"
+
+        onPressed: root.toggleView(root.workPanelView)
     }
 
     GlobalShortcut { // qmllint disable unresolved-type

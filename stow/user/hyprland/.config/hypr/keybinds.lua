@@ -24,6 +24,7 @@ hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd(PROGRAMS.screenCapture))
 -- Quickshell
 hl.bind(mainMod .. " + SHIFT + D", hl.dsp.global("quickshell:toggleLauncher"))
 hl.bind(mainMod .. " + SHIFT + X", hl.dsp.global("quickshell:toggleControlPanel"))
+hl.bind(mainMod .. " + SHIFT + W", hl.dsp.global("quickshell:toggleWorkPanel"))
 hl.bind(mainMod .. " + SHIFT + Z", hl.dsp.global("quickshell:hideNotch"))
 
 -- Move focus with mainMod + hjkl

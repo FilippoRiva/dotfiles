@@ -4,7 +4,7 @@ import Quickshell.Services.Mpris
 import QtQuick
 import '../../../'
 
-Elements.NotchElement {
+Elements.NotchElement { 
     id: root
 
     property var player: root.findPlayer()
