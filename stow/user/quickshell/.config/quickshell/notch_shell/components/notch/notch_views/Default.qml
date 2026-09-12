@@ -15,7 +15,7 @@ Views.NotchView{
             onActivate: () => notch_view.notch.view = notch_view.notch.launcherView
         }
         Elements.Clock {
-            size: 10
+            size: 12
             format: "HH:mm"
         }
         Elements.IconButton {

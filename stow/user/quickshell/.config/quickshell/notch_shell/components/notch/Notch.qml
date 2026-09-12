@@ -72,9 +72,15 @@ Rectangle {
         Views.ControlPanel { notch: root }
     }
 
+    Component {
+        id: networkPanelViewComponent
+        Views.NetworkPanel { notch: root }
+    }
+
     property Component defaultView: defaultViewComponent
     property Component launcherView: launcherViewComponent
     property Component controlPanelView: controlPanelViewComponent
+    property Component networkPanelView: networkPanelViewComponent
     readonly property bool isExpanded: view !== defaultView
 
     // Content
@@ -87,11 +93,11 @@ Rectangle {
     }
 
     function toggleView (viewToToggle) {
-        if (root.screen.name != Hyprland.focusedMonitor.name) return
-        if (root.view == root.defaultView) {
-            root.view = viewToToggle
-        } else {
+        if (root.screen.name != Hyprland.focusedMonitor?.name) return
+        if (root.view == viewToToggle) {
             root.view = root.defaultView
+        } else {
+            root.view = viewToToggle
         }
     }
 

@@ -8,7 +8,7 @@ Views.NotchView {
     spacing: 0
     focus: true
     property int gridWidth: 5
-    property int cellWidth: 70
+    property int cellWidth: 90
     property int cellHeight: 50
 
     Keys.onEscapePressed: (event) => {
@@ -36,7 +36,8 @@ Views.NotchView {
         Layout.margins: 10
         Layout.alignment: Qt.AlignHCenter
         spacing: 5
-        Elements.WifiStatus {
+        Elements.NetworkStatus {
+            notch : root.notch
             implicitHeight: root.cellHeight
             implicitWidth: root.cellWidth * (root.gridWidth - 2)
         }

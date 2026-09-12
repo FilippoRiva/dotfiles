@@ -18,7 +18,7 @@ ShellRoot{
 
         // Positioning
         screen: modelData
-        height: modelData.height // occupies entire height
+        implicitHeight: modelData.height // occupies entire height
 
         anchors {
             top: true

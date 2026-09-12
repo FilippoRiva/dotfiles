@@ -34,6 +34,7 @@ Elements.NotchElement {
     Timer {
         id: gpuTimer
         interval: root.pollInterval
+        triggeredOnStart: true
         repeat: true
         running: root.gpuAvailable
         onTriggered: gpuProc.exec(["nvidia-smi", "--query-gpu=temperature.gpu", "--format=csv,noheader,nounits"])
@@ -51,11 +52,13 @@ Elements.NotchElement {
         color: Colors.background
         border.color: Colors.background2
         radius: 5
+        Layout.margins:  5
 
         RowLayout {
             anchors.fill: parent
             spacing: 0
             Text {
+                Layout.margins:  5
                 font.family: root.iconFont
                 text: "thermostat"
                 font.pixelSize: 24

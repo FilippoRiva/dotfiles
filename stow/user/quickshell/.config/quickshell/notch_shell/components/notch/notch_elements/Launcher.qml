@@ -11,8 +11,11 @@ import "../../.."
 Elements.NotchElement {
     id: root
 
-    width: launcher.width
-    height: launcher.height
+    property int launcherWidth : 500
+    property int launcherHeight : 300
+
+    implicitWidth: root.launcherWidth
+    implicitHeight: root.launcherHeight
 
     required property var notch
     property var terminalCommand: ["kitty", "-e"]
@@ -22,8 +25,8 @@ Elements.NotchElement {
     Rectangle {
         id: launcher
 
-        width: 500
-        height: 300
+        implicitWidth: root.launcherWidth
+        implicitHeight: root.launcherHeight
         radius: 16
         color: Colors.background
 

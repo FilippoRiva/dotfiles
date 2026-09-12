@@ -55,6 +55,7 @@ Elements.NotchElement {
             anchors.fill: parent
             spacing: 0
             Text {
+                Layout.margins:  5
                 font.family: root.iconFont
                 text: "memory"
                 font.pixelSize: 24
