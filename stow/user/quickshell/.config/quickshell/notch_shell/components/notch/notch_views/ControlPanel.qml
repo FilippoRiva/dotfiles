@@ -4,44 +4,54 @@ import '../notch_elements' as Elements
 import '.' as Views
 
 Views.NotchView {
-    id: notch_view
+    id: root
     spacing: 0
     focus: true
+    property int gridWidth: 5
+    property int cellWidth: 70
+    property int cellHeight: 50
 
     Keys.onEscapePressed: (event) => {
-        notch_view.notch.view = notch_view.notch.defaultView
+        root.notch.view = root.notch.defaultView
         event.accepted = true
     }
 
-    RowLayout {
-        Layout.margins: 10
-        Layout.fillWidth: true
-        Elements.MusicController {}
+    Elements.MusicController {  
+        Layout.margins: 10 
+        implicitHeight: root.cellHeight
+        implicitWidth: root.cellWidth * root.gridWidth
     }
 
-    RowLayout {
-        Layout.fillWidth: true
-        Elements.Divider { Layout.fillWidth: true }
+    Elements.Divider { Layout.fillWidth: true }
+
+    Elements.AudioController { 
+        Layout.margins: 10 
+        implicitHeight: root.cellHeight
+        implicitWidth: root.cellWidth * root.gridWidth
     }
 
-    RowLayout {
-        Layout.margins: 10
-        Layout.alignment: Qt.AlignHCenter
-        Elements.AudioController {}
-    }
-
-    RowLayout {
-        Layout.fillWidth: true
-        Elements.Divider { Layout.fillWidth: true }
-    }
+    Elements.Divider { Layout.fillWidth: true }
 
     RowLayout {
         Layout.margins: 10
         Layout.alignment: Qt.AlignHCenter
-        Elements.Battery {}
-        Elements.Battery {}
-        Elements.Battery {}
-        Elements.Battery {}
+        spacing: 5
+        Elements.WifiStatus {
+            implicitHeight: root.cellHeight
+            implicitWidth: root.cellWidth * (root.gridWidth - 2)
+        }
+        Elements.Battery {
+            implicitHeight: root.cellHeight
+            implicitWidth: root.cellWidth 
+        }
+        Elements.CpuTemperature {
+            implicitHeight: root.cellHeight
+            implicitWidth: root.cellWidth 
+        }
+        Elements.GpuTemperature {
+            implicitHeight: root.cellHeight
+            implicitWidth: root.cellWidth 
+        }
     }
 
     RowLayout {
@@ -59,7 +69,7 @@ Views.NotchView {
             fontSize: 12
             icon: "home"
             button_enabled: true
-            onActivate: () => notch_view.notch.view = notch_view.notch.defaultView
+            onActivate: () => root.notch.view = root.notch.defaultView
         }
     }
 }

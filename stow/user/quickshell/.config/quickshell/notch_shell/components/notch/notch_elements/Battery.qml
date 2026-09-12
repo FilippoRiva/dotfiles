@@ -32,7 +32,9 @@ Elements.NotchElement {
     }
 
     Rectangle{
-        color: Colors.background2
+        anchors.fill: parent
+        color: Colors.background
+        border.color: Colors.background2
         radius: 5
 
         RowLayout {
@@ -45,6 +47,7 @@ Elements.NotchElement {
                 color: root.textColor
             }
             Text {
+                Layout.fillWidth: true
                 font.family: root.font
                 text: root.ready ? Math.round(root.percentage*100) + "%" : "--"
                 font.pixelSize: 14

@@ -6,8 +6,7 @@ import '../../../'
 
 Elements.NotchElement {
     id: root
-    implicitHeight: 30
-    implicitWidth: 300
+
     property string iconFont: "Material Symbols Rounded"
 
     RowLayout {
