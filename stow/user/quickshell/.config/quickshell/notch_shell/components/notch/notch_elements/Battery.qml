@@ -46,7 +46,7 @@ Elements.NotchElement {
             }
             Text {
                 font.family: root.font
-                text: root.ready ? root.percentage*100 + "%" : "--"
+                text: root.ready ? Math.round(root.percentage*100) + "%" : "--"
                 font.pixelSize: 14
                 color: root.textColor
             }
