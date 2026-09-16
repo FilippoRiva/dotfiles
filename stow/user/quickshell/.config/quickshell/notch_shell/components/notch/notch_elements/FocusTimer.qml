@@ -15,7 +15,7 @@ Elements.NotchElement {
         Text {
             font.family: "Geistmono Nerd Font"
             font.pixelSize: root.fontSize
-            text: Math.floor(TimerState.timeLeft / 60) + ":" + ( (TimerState.timeLeft % 60 < 10) ? '0'+TimerState.timeLeft % 60: TimerState.timeLeft % 60)
+            text: root.formatTime(TimerState.timeLeft)
             color: Colors.foreground
         }
         Elements.IconButton {
@@ -23,33 +23,50 @@ Elements.NotchElement {
             button_enabled: true
             onActivate: () => TimerState.toggle()
         }
-        Elements.TextButton {
-            icon: "10 min"
+        Elements.Button {
+            text: "10 min"
             buttonWidth: root.buttonWidth
             fontSize: root.fontSize
             button_enabled: true
             onActivate: () => TimerState.setTime(10*60)
         }
-        Elements.TextButton {
-            icon: "25 min"
+        Elements.Button {
+            text: "25 min"
             buttonWidth: root.buttonWidth
             fontSize: root.fontSize
             button_enabled: true
             onActivate: () => TimerState.setTime(25*60)
         }
-        Elements.TextButton {
-            icon: "+5 min"
+        Elements.Button {
+            text: "+10 min"
             buttonWidth: root.buttonWidth
             fontSize: root.fontSize
             button_enabled: true
-            onActivate: () => TimerState.addTime(5*60)
+            onActivate: () => TimerState.addTime(10*60)
         }
-        Elements.TextButton {
-            icon: "-5 min"
+        Elements.Button {
+            text: "-10 min"
             buttonWidth: root.buttonWidth
             fontSize: root.fontSize
             button_enabled: true
-            onActivate: () => TimerState.addTime(-5*60)
+            onActivate: () => TimerState.addTime(-10*60)
         }
+        Text {
+            font.family: "Geistmono Nerd Font"
+            font.pixelSize: root.fontSize
+            text: root.formatTime(TimerState.totalTime)
+            color: Colors.foreground
+        }
+    }
+    function formatTwoDigits(number) {
+        return number < 10 ? "0"+number : number
+    }
+
+    function formatTime (time) {
+        let seconds = formatTwoDigits(time % 60)
+        let minutes = formatTwoDigits(Math.floor(((time - seconds)%3600)/60))
+        let hours = formatTwoDigits(Math.floor((time - seconds - minutes*60)/60/60))
+        if (hours > 0 ) return hours + ":" + minutes + ":" + seconds
+        return minutes + ":" + seconds
     }
 }

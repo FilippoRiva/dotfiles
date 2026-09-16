@@ -1,16 +1,19 @@
 import './' as Elements
 import QtQuick
+import QtQuick.Layouts
 import '../../../'
 
 Elements.NotchElement {
     id: root
 
-    required property string text
+    property string icon
+    property string text
     property bool button_enabled: true
     property var onActivate
     property string backgroundColor: Colors.background2
     property int fontSize: 18
     property string font: "Geistmono Nerd Font"
+    property string iconFont: "Material Symbols Rounded"
     property int buttonWidth: 25
     property int buttonHeigth: 25
 
@@ -34,12 +37,22 @@ Elements.NotchElement {
             }
         }
 
-        Text {
-            font.family: root.font
+        RowLayout {
             anchors.centerIn: parent
-            text: root.text
-            color: root.button_enabled ? Colors.foreground : Colors.color6
-            font.pixelSize: root.fontSize
+            Text {
+                font.family: root.iconFont
+                text: root.icon
+                color: root.button_enabled ? Colors.foreground : Colors.color6
+                font.pixelSize: root.fontSize
+                visible: root.icon != undefined
+            }
+            Text {
+                font.family: root.font
+                text: root.text
+                color: root.button_enabled ? Colors.foreground : Colors.color6
+                font.pixelSize: root.fontSize
+                visible: root.text != undefined
+            }
         }
 
         MouseArea {
