@@ -1,36 +1,7 @@
-// Place your key bindings in this file to override the defaults
 [
+    // Escape leaves sidebar
     {
-        "key": "ctrl+h",
-        "command": "workbench.action.navigateLeft"
-    },
-    {
-        "key": "ctrl+l",
-        "command": "workbench.action.navigateRight"
-    },
-    {
-        "key": "ctrl+k",
-        "command": "workbench.action.navigateUp",
-        "when": "!inputFocus"
-    },
-    {
-        "key": "ctrl+j",
-        "command": "workbench.action.navigateDown",
-        "when": "!inputFocus"
-    },
-    {
-        "key": "space e",
-        "command": "runCommands",
-        "args": {
-            "commands": [
-                "workbench.action.toggleSidebarVisibility",
-                "workbench.files.action.focusFilesExplorer"
-            ]
-        },
-        "when": "vim.mode == 'Normal' && editorTextFocus && !sideBarFocus"
-    },
-    {
-        "key": "space e",
+        "key": "escape",
         "command": "runCommands",
         "args": {
             "commands": [
@@ -38,95 +9,18 @@
                 "workbench.action.focusActiveEditorGroup"
             ]
         },
-        "when": "sideBarFocus && !inputFocus"
+        "when": "sideBarFocus"
     },
     {
-        "key": "space space",
-        "command": "workbench.action.quickOpen",
-        "when": "vim.mode == 'Normal' && (editorTextFocus || !inputFocus)"
-    },
-    {
-        "key": "space s g",
-        "command": "workbench.action.findInFiles",
-        "when": "vim.mode == 'Normal' && (editorTextFocus || !inputFocus)"
-    },
-    {
-        "key": "space s h",
-        "command": "workbench.action.splitEditor",
-        "when": "vim.mode == 'Normal' && editorTextFocus"
-    },
-    {
-        "key": "space s v",
-        "command": "workbench.action.splitEditorDown",
-        "when": "vim.mode == 'Normal' && editorTextFocus"
-    },
-    {
-        "key": "space b d",
-        "command": "workbench.action.closeActiveEditor",
-        "when": "vim.mode == 'Normal' && editorTextFocus"
-    },
-    {
-        "key": "space b o",
-        "command": "workbench.action.closeOtherEditors",
-        "when": "vim.mode == 'Normal' && editorTextFocus"
-    },
-    {
-        "key": "space c a",
-        "command": "editor.action.codeAction",
-        "when": "vim.mode == 'Normal' && editorTextFocus"
-    },
-    {
-        "key": "space c r",
-        "command": "editor.action.rename",
-        "when": "vim.mode == 'Normal' && editorTextFocus"
-    },
-    {
-        "key": "space c d",
-        "command": "workbench.actions.view.problems",
-        "when": "vim.mode == 'Normal' && editorTextFocus"
-    },
-    {
-        "key": "space g b",
+        "key": "enter",
         "command": "runCommands",
-        "when": "vim.mode == 'Normal' && editorTextFocus",
         "args": {
-            "commands": ["workbench.view.scm", "workbench.scm.focus"]
-        }
-    },
-    {
-        "key": "g d",
-        "command": "editor.action.revealDefinition",
-        "when": "vim.mode == 'Normal' && editorTextFocus"
-    },
-    {
-        "key": "g r",
-        "command": "editor.action.goToReferences",
-        "when": "vim.mode == 'Normal' && editorTextFocus"
-    },
-    {
-        "key": "g i",
-        "command": "editor.action.goToImplementation",
-        "when": "vim.mode == 'Normal' && editorTextFocus"
-    },
-    {
-        "key": "[ d",
-        "command": "editor.action.marker.prev",
-        "when": "vim.mode == 'Normal' && editorTextFocus"
-    },
-    {
-        "key": "] d",
-        "command": "editor.action.marker.next",
-        "when": "vim.mode == 'Normal' && editorTextFocus"
-    },
-    {
-        "key": "[ b",
-        "command": "workbench.action.previousEditor",
-        "when": "vim.mode == 'Normal' && editorTextFocus"
-    },
-    {
-        "key": "] b",
-        "command": "workbench.action.nextEditor",
-        "when": "vim.mode == 'Normal' && editorTextFocus"
+            "commands": [
+                "workbench.action.toggleSidebarVisibility",
+                "explorer.openAndPassFocus"               
+            ]
+        },
+        "when" : "filesExplorerFocus && foldersViewVisible && !explorerResourceIsFolder && !inputFocus"
     },
     {
         "key": "r",
@@ -157,5 +51,5 @@
         "key": "x",
         "command": "filesExplorer.cut",
         "when": "filesExplorerFocus && foldersViewVisible && !inputFocus"
-    }
+    },
 ]
