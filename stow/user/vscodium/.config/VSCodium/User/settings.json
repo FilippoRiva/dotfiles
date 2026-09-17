@@ -215,7 +215,8 @@
     "vim.handleKeys": {
         "<C-a>": false,
         "<C-w>": false,
-        "<C-c>": false
+        "<C-c>": false,
+        "<C-e>": false
     },
     "extensions.experimental.affinity": {
         "vscodevim.vim": 1
