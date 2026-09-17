@@ -12,7 +12,7 @@ Views.NotchView {
     property int cellHeight: 50
 
     Keys.onEscapePressed: (event) => {
-        root.notch.view = root.notch.defaultView
+        root.notch.setView('default')
         event.accepted = true
     }
 
@@ -25,6 +25,7 @@ Views.NotchView {
     Elements.Divider { Layout.fillWidth: true }
 
     Elements.AudioController { 
+        id: audioController
         Layout.margins: 10 
         implicitHeight: root.cellHeight
         implicitWidth: root.cellWidth * root.gridWidth
@@ -70,7 +71,7 @@ Views.NotchView {
             fontSize: 12
             icon: "home"
             button_enabled: true
-            onActivate: () => root.notch.view = root.notch.defaultView
+            onActivate: () => root.notch.setView('default')
         }
     }
 }

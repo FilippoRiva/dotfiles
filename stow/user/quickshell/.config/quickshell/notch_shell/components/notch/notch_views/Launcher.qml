@@ -9,7 +9,7 @@ Views.NotchView {
     focus: true
 
     Keys.onEscapePressed: (event) => {
-        notch_view.notch.view = notch_view.notch.defaultView
+        notch_view.notch.setView('default')
         event.accepted = true
     }
 
@@ -37,7 +37,7 @@ Views.NotchView {
             fontSize: 12
             icon: "home"
             button_enabled: true
-            onActivate: () => notch_view.notch.view = notch_view.notch.defaultView
+            onActivate: () => notch_view.notch.setView('default')
         }
     }
 }

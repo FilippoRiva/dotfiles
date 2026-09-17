@@ -12,7 +12,7 @@ Elements.NotchElement {
     id: root
 
     property int launcherWidth : 500
-    property int launcherHeight : 300
+    property int launcherHeight : 600
 
     implicitWidth: root.launcherWidth
     implicitHeight: root.launcherHeight
@@ -36,7 +36,7 @@ Elements.NotchElement {
             } else {
                 entry.execute()
             }
-            root.notch.view = root.notch.defaultView
+            root.notch.setView('default')
         }
 
         property var allApps: DesktopEntries.applications.values
@@ -81,7 +81,10 @@ Elements.NotchElement {
             "qv4l2",
             "qvidcap",
             "bssh",
-            "bvnc"
+            "bvnc",
+            "xdvi",
+            "jconsole-java-openjdk",
+            "jshell-java-openjdk"
         ]
 
         function search() {
@@ -187,6 +190,11 @@ Elements.NotchElement {
                             list.decrementCurrentIndex()
                             event.accepted = true
                         }
+                        onActiveFocusChanged: {
+                            if (activeFocus == false) {
+                                root.notch.setView('default')
+                            }
+                        }
                     }
                 }
             }
@@ -288,7 +296,7 @@ Elements.NotchElement {
                             hoverEnabled: true
                             onClicked: {
                                 let app = launcher.appResults[entry.index]
-                                console.log("Launching " + app.name)
+                                console.log("Launching -> name: " + app.name + " | id: " + app.id)
                                 launcher.launchEntry(app)
                             }
                             onEntered: list.currentIndex = entry.index

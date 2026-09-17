@@ -139,11 +139,22 @@ Rectangle {
         }
     }
 
+    onFocusChanged: {
+        console.log("Notch Focus changed to : " + root.focus)
+    }
+
+    onActiveFocusChanged: {
+        console.log("Notch ActiveFocus changed to : " + root.activeFocus)
+    }
 
     onViewChanged: {
         loader.sourceComponent = root.view
-        var win = root.Window.window
-        if (win) win.requestActivate()
+        if (root.view !== root.defaultView) {
+            Qt.callLater(() => {
+                var win = root.Window.window
+                if (win) win.requestActivate()
+            })
+        }
     }
 
     function hide() {
@@ -157,6 +168,22 @@ Rectangle {
         panelWindow.exclusive = true
         root.hidden = false
         root.view = root.lastView
+    }
+
+    function setView(name) {
+        if (name == "default") {
+            root.view = root.defaultView
+        } else if (name == "launcher") {
+            root.view = root.launcherView
+        } else if (name == "controlPanel") {
+            root.view = root.controlPanelView
+        } else if (name == "work") {
+            root.view = root.workPanelView
+        } else if (name == "network") {
+            root.view = root.networkPanelView
+        } else {
+            console.log("Warning: unknown view name")
+        }
     }
 
     // Notch Animations

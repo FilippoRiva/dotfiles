@@ -109,7 +109,7 @@ Elements.NotchElement {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                root.notch.view = root.notch.networkPanelView
+                root.notch.setView('network')
             }            
         }
     }

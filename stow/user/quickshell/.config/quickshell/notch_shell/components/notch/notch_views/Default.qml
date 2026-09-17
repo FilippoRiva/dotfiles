@@ -12,7 +12,7 @@ Views.NotchView{
             fontSize: 10
             icon: "search"
             button_enabled: true
-            onActivate: () => notch_view.notch.view = notch_view.notch.launcherView
+            onActivate: () => notch_view.notch.setView('launcher')
         }
         Elements.Clock {
             size: 12
@@ -23,7 +23,7 @@ Views.NotchView{
             fontSize: 10
             icon: "settings"
             button_enabled: true
-            onActivate: () => notch_view.notch.view = notch_view.notch.controlPanelView
+            onActivate: () => notch_view.notch.setView('controlPanel')
         }
     }
 }

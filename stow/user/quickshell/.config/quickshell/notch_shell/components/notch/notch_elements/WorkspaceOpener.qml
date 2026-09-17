@@ -65,7 +65,7 @@ Elements.NotchElement {
                     } else if (config.onTriggered) {
                         config.onTriggered()
                     }
-                    root.notch.view = root.notch.defaultView
+                    root.notch.setView('default')
                 }
             }
         }

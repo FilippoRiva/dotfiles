@@ -1,5 +1,6 @@
 import Quickshell
 import Quickshell.Hyprland._FocusGrab
+import QtQuick
 import "components/notch"
 
 // wrapper for multi screen layout importing main components
@@ -37,6 +38,14 @@ ShellRoot{
 
         // Focus
         focusable: true
+        Connections {
+            target: panel.contentItem
+            function onActiveFocusItemChanged() {
+                if (!panel.contentItem.activeFocusItem && notch.isExpanded) {
+                    notch.setView('default')
+                }
+            }
+        }
         HyprlandFocusGrab {
             active: notch.isExpanded
             windows: [panel]
