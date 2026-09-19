@@ -46,6 +46,8 @@ function y() {
 	command rm -f -- "$tmp"
 }
 
+alias yazi=y
+
 # ENV
 
 export QML_IMPORT_PATH=/usr/lib/qt6/qml
