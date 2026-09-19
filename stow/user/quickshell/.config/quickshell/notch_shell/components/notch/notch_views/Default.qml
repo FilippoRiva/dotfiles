@@ -7,7 +7,7 @@ Views.NotchView{
     id : notch_view
     RowLayout {
         spacing: 0
-        Elements.IconButton {
+        Elements.Button {
             backgroundColor: "transparent"
             fontSize: 10
             icon: "search"
@@ -18,7 +18,7 @@ Views.NotchView{
             size: 12
             format: "HH:mm"
         }
-        Elements.IconButton {
+        Elements.Button {
             backgroundColor: "transparent"
             fontSize: 10
             icon: "settings"

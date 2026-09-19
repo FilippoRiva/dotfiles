@@ -29,7 +29,7 @@ Views.NotchView {
         Layout.fillWidth: true
         Layout.margins: 5
         Item { Layout.fillWidth: true }
-        Elements.IconButton {
+        Elements.Button {
             backgroundColor: "transparent"
             fontSize: 12
             icon: "home"

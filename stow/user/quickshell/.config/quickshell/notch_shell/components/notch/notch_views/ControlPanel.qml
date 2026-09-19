@@ -66,7 +66,7 @@ Views.NotchView {
         Layout.margins: 5
         Elements.WorkspaceDots {}
         Item { Layout.fillWidth: true }
-        Elements.IconButton {
+        Elements.Button {
             backgroundColor: "transparent"
             fontSize: 12
             icon: "home"

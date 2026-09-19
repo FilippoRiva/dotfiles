@@ -37,21 +37,49 @@ Elements.NotchElement {
             }
         }
 
+        // Icon-only mode
+        Text {
+            id: iconOnlyText
+            anchors.centerIn: parent
+            font.family: root.iconFont
+            text: root.icon
+            color: root.button_enabled ? Colors.foreground : Colors.color6
+            font.pixelSize: root.fontSize
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            visible: root.icon !== "" && root.text === ""
+        }
+
+        // Text-only mode
+        Text {
+            id: textOnlyText
+            anchors.centerIn: parent
+            font.family: root.font
+            text: root.text
+            color: root.button_enabled ? Colors.foreground : Colors.color6
+            font.pixelSize: root.fontSize
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            visible: root.text !== "" && root.icon === ""
+        }
+
+        // Icon + text mode
         RowLayout {
             anchors.centerIn: parent
+            spacing: 2
+            visible: root.icon !== "" && root.text !== ""
+
             Text {
                 font.family: root.iconFont
                 text: root.icon
                 color: root.button_enabled ? Colors.foreground : Colors.color6
                 font.pixelSize: root.fontSize
-                visible: root.icon != undefined
             }
             Text {
                 font.family: root.font
                 text: root.text
                 color: root.button_enabled ? Colors.foreground : Colors.color6
                 font.pixelSize: root.fontSize
-                visible: root.text != undefined
             }
         }
 

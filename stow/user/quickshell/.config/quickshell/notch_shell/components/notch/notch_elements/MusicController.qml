@@ -115,19 +115,19 @@ Elements.NotchElement {
             }
         }
 
-        Elements.IconButton {
+        Elements.Button {
             icon: "skip_previous"
             button_enabled: root.canPrev
             onActivate: () => root.player.previous()
         }
 
-        Elements.IconButton {
+        Elements.Button {
             icon: root.playing ? "pause" : "play_arrow"
             button_enabled: root.canToggle
             onActivate: () => root.player.togglePlaying()
         }
 
-        Elements.IconButton {
+        Elements.Button {
             icon: "skip_next"
             button_enabled: root.canNext
             onActivate: () => root.player.next()
