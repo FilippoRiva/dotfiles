@@ -22,15 +22,14 @@ Elements.NotchElement {
             label: "arco",
             icon: "code",
             commands: [
-                "kitty -d $(echo $HOME)/projects/arco",
-                "codium -d $(echo $HOME)/projects/arco"
+                "session=$(mktemp); printf '%s\\n' 'cd ~/projects/arco' 'launch --title nvim zsh -lic \"exec nvim\"' 'new_tab pi' 'cd ~/projects/arco' 'launch zsh -lic \"exec pi\"' 'new_tab terminal' 'cd ~/projects/arco' 'launch' > \"$session\"; kitty --session \"$session\"; rm -f \"$session\""
             ]
         },
         {
             label: "dotfiles",
             icon: "settings",
             commands: [
-                "codium -d $(echo $HOME)/dotfiles"
+                "session=$(mktemp); printf '%s\\n' 'cd ~/dotfiles' 'launch --title nvim zsh -lic \"exec nvim\"' 'new_tab pi' 'cd ~/dotfiles' 'launch zsh -lic \"exec pi\"' 'new_tab terminal' 'cd ~/dotfiles' 'launch' > \"$session\"; kitty --session \"$session\"; rm -f \"$session\""
             ]
         },
         {
