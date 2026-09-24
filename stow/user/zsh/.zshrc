@@ -35,6 +35,7 @@ alias sdn='systemctl --no-wall poweroff'
 alias reboot='systemctl --no-wall reboot'
 alias top=btop
 alias vi=nvim
+alias j=just
 
 
 # YAZI 
@@ -52,5 +53,8 @@ alias yazi=y
 export QML_IMPORT_PATH=/usr/lib/qt6/qml
 export EDITOR=nvim
 
-# THESIS
-alias arco="cd ~/projects/arco;./load_env_from_keyring.sh"
+# Pi
+export PATH="$HOME/.pi/agent/bin:$PATH"
+
+# Go
+export PATH="$HOME/go/bin:$PATH"
