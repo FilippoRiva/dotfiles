@@ -49,6 +49,8 @@ function y() {
 alias yazi=y
 
 # ENV
-
 export QML_IMPORT_PATH=/usr/lib/qt6/qml
 export EDITOR=nvim
+
+# THESIS
+alias arco="cd ~/projects/arco;./load_env_from_keyring.sh"
