@@ -22,6 +22,10 @@ Elements.NotchElement {
         target: Hyprland.toplevels
         function onValuesChanged() { root.refreshToken++ }
     }
+    Connections {
+        target: Hyprland.workspaces
+        function onValuesChanged() { root.refreshToken++ }
+    }
 
     Row {
         id: content
@@ -42,19 +46,35 @@ Elements.NotchElement {
                     }
                     return null
                 }
-                property bool isActiveOnThisMonitor: workspace?.active && workspace?.monitor === root.monitor
+                property bool hasWindows: {
+                    root.refreshToken
+                    for (let tl of Hyprland.toplevels.values) {
+                        if (tl.workspace?.id === wsId) return true
+                    }
+                    return false
+                }
+                property bool isAssignedToThisMonitor: workspace?.monitor?.name === root.monitor?.name
+                property bool isActiveOnThisMonitor: workspace?.active && isAssignedToThisMonitor
                 property bool isFocused: workspace?.focused ?? false
                 property bool pulsePhase: false
 
-                width: 8
+                visible: isAssignedToThisMonitor
+
+                width: {
+                  if (isActiveOnThisMonitor) return 8
+                  return 8
+                }
                 height: 8
                 radius: 4
                 color: {
-                    if (isActiveOnThisMonitor) return pulsePhase ? Colors.color1 : Colors.foreground
-                    if (workspace != null) return Colors.color2
+                    if (isActiveOnThisMonitor) return Colors.foreground
+                    if (workspace != null & hasWindows) return Colors.color2
                     return Colors.color6
                 }
 
+                Behavior on width {
+                    NumberAnimation { duration: 350; easing.type: Easing.OutCubic }
+                }
                 Behavior on color {
                     ColorAnimation { duration: 350; easing.type: Easing.OutCubic }
                 }
