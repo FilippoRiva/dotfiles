@@ -60,3 +60,4 @@ export PATH="$HOME/.pi/agent/bin:$PATH"
 
 # Go
 export PATH="$HOME/go/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
