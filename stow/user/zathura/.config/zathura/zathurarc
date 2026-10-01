@@ -1,0 +1,15 @@
+# Stop the view from snapping violently to page boundaries
+set scroll-page-aware "false"
+
+# Define how much of the previous page remains visible when jumping down (0.0 to 1.0)
+set scroll-full-overlap 0.0
+
+# Enable smooth hardware acceleration for scrolling
+set smooth-scroll "true"
+
+# Adjust the distance (in pixels) scrolled per keypress (Default is usually 40)
+set scroll-step 100
+
+# Remap J and K to move half a page down and up instead of jumping full pages
+map J scroll half-down
+map K scroll half-up
