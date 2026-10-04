@@ -12,6 +12,10 @@ return {
             hidden = true, -- show dotfiles in file searches (including smart)
             ignored = true, -- include gitignored files in file searches
           },
+          grep = {
+            hidden = true, -- show dotfiles in file searches (including smart)
+            ignored = true, -- include gitignored files in file searches
+          },
         },
       },
     },
