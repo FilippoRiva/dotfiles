@@ -39,6 +39,15 @@ alias top=btop
 alias vi=nvim
 alias j=just
 
+function thesis-sync() { 
+  zen-browser ~/ssh-sync/thesis.pdf && echo "Browser Opened"
+  while true; do
+    rsync -aiz --partial --inplace -e 'ssh -i ~/ssh-sync/key' \
+      rhiphi@arch.yattle-gila.ts.net:~/projects/thesis/out/thesis.pdf \
+      ~/ssh-sync/thesis.pdf 2>/dev/null | grep -q '.' && echo "[$(date +%H:%M:%S)] thesis.pdf updated"
+    sleep 2
+  done
+}
 
 # YAZI 
 function y() {
