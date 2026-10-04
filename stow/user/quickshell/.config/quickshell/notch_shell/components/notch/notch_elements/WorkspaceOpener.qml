@@ -22,7 +22,7 @@ Elements.NotchElement {
             label: "arco",
             icon: "code",
             commands: [
-                "session=$(mktemp); printf '%s\\n' 'cd ~/projects/arco' 'launch --title nvim zsh -lic \"source ~/projects/arco/scripts/activate_arco.sh; exec nvim\"' 'new_tab pi' 'cd ~/projects/arco' 'launch zsh -lic \"exec pi --continue\"' 'new_tab terminal' 'cd ~/projects/arco' 'launch zsh -lic \"source ~/projects/arco/scripts/activate_arco.sh; exec zsh -i\"' > \"$session\"; kitty --session \"$session\"; rm -f \"$session\""
+                "session=$(mktemp); printf '%s\\n' 'cd ~/projects/Riva-ARCO/' 'launch --title nvim zsh -lic \"source ~/projects/Riva-ARCO/scripts/activate_arco.sh; exec nvim\"' 'new_tab pi' 'cd ~/projects/Riva-ARCO/' 'launch zsh -lic \"exec pi --continue\"' 'new_tab terminal' 'cd ~/projects/Riva-ARCO/' 'launch zsh -lic \"source ~/projects/Riva-ARCO/scripts/activate_arco.sh; exec zsh -i\"' > \"$session\"; kitty --session \"$session\"; rm -f \"$session\""
             ]
         },
         {
