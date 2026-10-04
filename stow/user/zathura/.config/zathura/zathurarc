@@ -1,15 +1,48 @@
-# Stop the view from snapping violently to page boundaries
-set scroll-page-aware "false"
+# Zathura configuration file
+# See man `man zathurarc'
 
-# Define how much of the previous page remains visible when jumping down (0.0 to 1.0)
-set scroll-full-overlap 0.0
+# Open document in fit-width mode by default
+set adjust-open "best-fit"
 
-# Enable smooth hardware acceleration for scrolling
+# One page per row by default
+set pages-per-row 1
+
+#stop at page boundries
+set scroll-page-aware "true"
 set smooth-scroll "true"
-
-# Adjust the distance (in pixels) scrolled per keypress (Default is usually 40)
+set scroll-full-overlap 0.01
 set scroll-step 100
 
-# Remap J and K to move half a page down and up instead of jumping full pages
-map J scroll half-down
-map K scroll half-up
+#zoom settings
+set zoom-min 10
+set guioptions ""
+
+# zathurarc-dark
+
+set font "inconsolata 12"
+set default-bg "#000000" #00
+set default-fg "#F7F7F6" #01
+
+set statusbar-fg "#B0B0B0" #04
+set statusbar-bg "#202020" #01
+
+set inputbar-bg "#151515" #00 currently not used
+set inputbar-fg "#FFFFFF" #02
+
+set notification-error-bg "#AC4142" #08
+set notification-error-fg "#151515" #00
+
+set notification-warning-bg "#AC4142" #08
+set notification-warning-fg "#151515" #00
+
+set completion-bg "#303030" #02
+set completion-fg "#E0E0E0" #0C
+
+set notification-bg "#90A959" #0B
+set notification-fg "#151515" #00
+
+set render-loading "false"
+set scroll-step 50
+unmap f
+map f toggle_fullscreen
+map [fullscreen] f toggle_fullscreen
