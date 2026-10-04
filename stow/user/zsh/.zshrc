@@ -40,7 +40,8 @@ alias vi=nvim
 alias j=just
 
 function thesis-sync() { 
-  zathura ~/ssh-sync/thesis.pdf && echo "Zathura opened"
+  zathura ~/ssh-sync/thesis.pdf &
+  echo "Zathura opened"
   while true; do
     rsync -aiz --partial --inplace -e 'ssh -i ~/ssh-sync/key' \
       rhiphi@arch.yattle-gila.ts.net:~/projects/thesis/out/thesis.pdf \
