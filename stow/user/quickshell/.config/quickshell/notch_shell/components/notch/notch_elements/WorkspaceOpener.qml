@@ -12,24 +12,10 @@ Elements.NotchElement {
 
     property var configs: [
         {
-            label: "thesis",
-            icon: "school",
+            label: "herdr",
+            icon: "robot_2",
             commands: [
-                "codium -d $(echo $HOME)/projects/thesis"
-            ]
-        },
-        {
-            label: "arco",
-            icon: "code",
-            commands: [
-                "session=$(mktemp); printf '%s\\n' 'cd ~/projects/Riva-ARCO/' 'launch --title nvim zsh -lic \"source ~/projects/Riva-ARCO/scripts/activate_arco.sh; exec nvim\"' 'new_tab pi' 'cd ~/projects/Riva-ARCO/' 'launch zsh -lic \"exec pi --continue\"' 'new_tab terminal' 'cd ~/projects/Riva-ARCO/' 'launch zsh -lic \"source ~/projects/Riva-ARCO/scripts/activate_arco.sh; exec zsh -i\"' > \"$session\"; kitty --session \"$session\"; rm -f \"$session\""
-            ]
-        },
-        {
-            label: "dotfiles",
-            icon: "settings",
-            commands: [
-                "session=$(mktemp); printf '%s\\n' 'cd ~/dotfiles' 'launch --title nvim zsh -lic \"exec nvim\"' 'new_tab pi' 'cd ~/dotfiles' 'launch zsh -lic \"exec pi --continue\"' 'new_tab terminal' 'cd ~/dotfiles' 'launch' > \"$session\"; kitty --session \"$session\"; rm -f \"$session\""
+                "kitty zsh -lic 'exec herdr'"
             ]
         },
         {
