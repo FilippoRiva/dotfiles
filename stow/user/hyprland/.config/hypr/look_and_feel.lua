@@ -62,7 +62,7 @@ hl.curve("quick",          { type = "bezier", points = { {0.15, 0},    {0.1, 1} 
 hl.curve("easy",           { type = "spring", mass = 1, stiffness = 238.1191, dampening = 24.21279333 })
 
 -- Animations
-hl.animation({ leaf = "global",        enabled = true,  speed = 10,   bezier = "easeOutQuint" })
-hl.animation({ leaf = "border",        enabled = true,  speed = 5.39, bezier = "easeOutQuint" })
-hl.animation({ leaf = "windows",       enabled = true,  speed = 4.79, spring = "easy" ,         style = "slide"})
-hl.animation({ leaf = "workspaces",    enabled = true,  speed = 1.94, bezier = "almostLinear", style = "slide" })
+hl.animation({ leaf = "global",        enabled = true,  speed = 3,    bezier = "easeOutQuint" })
+hl.animation({ leaf = "border",        enabled = true,  speed = 3,    bezier = "easeOutQuint" })
+hl.animation({ leaf = "windows",       enabled = true,  speed = 2.5,  spring = "easy" ,         style = "slide"})
+hl.animation({ leaf = "workspaces",    enabled = true,  speed = 1,    bezier = "almostLinear", style = "slide" })
