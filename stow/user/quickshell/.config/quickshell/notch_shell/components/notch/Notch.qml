@@ -158,13 +158,15 @@ Rectangle {
     }
 
     function hide() {
+        Hyprland.dispatch("hl.dsp.exec_cmd(\"hyprctl eval 'hl.config({ general = { gaps_in = 0, gaps_out = 0 }, decoration = { rounding = 0 } })'\")")
         panelWindow.exclusive = false
         root.hidden = true
         root.lastView = root.view
         root.view = root.defaultView
     }
 
-    function show() { 
+    function show() {
+        Hyprland.dispatch("hl.dsp.exec_cmd(\"hyprctl eval 'hl.config({ general = { gaps_in = 5, gaps_out = 10 }, decoration = { rounding = 25 } })'\")")
         panelWindow.exclusive = true
         root.hidden = false
         root.view = root.lastView
