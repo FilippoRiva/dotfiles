@@ -6,6 +6,7 @@
 
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
+hl.env("PATH", "/home/rhiphi/.local/bin:/home/rhiphi/go/bin:/home/rhiphi/.pi/agent/bin:/home/rhiphi/.npm-global/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl")
 
 hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
 

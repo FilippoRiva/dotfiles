@@ -4,7 +4,7 @@
 
 PROGRAMS = {
     terminal    = "kitty",
-    fileManager = "kitty zsh -i -c 'y; exec zsh'",
+    fileManager = "strata",
     menu = "fuzzel",
     browser = "zen-browser",
     musicPlayer = "spotify",
